@@ -7,7 +7,10 @@ import {
   BarChart,
   Lightbulb,
   PieChart,
-  ThumbsUp
+  ThumbsUp,
+  Users,
+  TrendingUp,
+  Target
 } from "lucide-react";
 
 export function meta({ }: Route.MetaArgs) {
@@ -43,9 +46,9 @@ const RotatingBadge = () => (
         d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
         fill="none"
       />
-      <text className="text-[11px] font-bold uppercase tracking-[2.5px] fill-primary-navy">
-        <textPath xlinkHref="#curve">
-          Business Service Consultation • Business Service Consultation •
+      <text className="text-[9px] font-bold uppercase tracking-[4px] fill-primary-navy">
+        <textPath xlinkHref="#curve" textLength="232" lengthAdjust="spacing">
+          Business Service Consultation •
         </textPath>
       </text>
     </svg>
@@ -129,10 +132,10 @@ export default function Home() {
               </div>
 
               {/* LEFT FLOATING CARD: STATISTICS */}
-              <FloatingCard className="top-[15%] -left-2 lg:-left-16 w-64 hidden md:block" delay={0.8}>
-                <h4 className="font-serif font-bold text-lg text-primary-navy mb-5">Project Statistic 2025</h4>
+              <FloatingCard className="top-[15%] -left-2 lg:-left-16 w-52 !p-4 hidden md:block" delay={0.8}>
+                <h4 className="font-serif font-bold text-base text-primary-navy mb-4">Project Statistic 2025</h4>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div>
                     <div className="flex justify-between text-xs font-bold text-gray-700 mb-1">
                       <span>Happy Client</span>
@@ -171,29 +174,29 @@ export default function Home() {
               </FloatingCard>
 
               {/* RIGHT FLOATING CARD: POPULAR SERVICES */}
-              <FloatingCard className="bottom-[10%] -right-2 lg:-right-16 w-72 !bg-primary-navy !text-white hidden md:block" delay={1}>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#FFE55C] rounded-xl flex items-center justify-center text-primary-navy shadow-md">
-                    <Trophy className="w-6 h-6" />
+              <FloatingCard className="bottom-[10%] -right-2 lg:-right-16 w-60 !p-4 !bg-primary-navy !text-white hidden md:block" delay={1}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-[#FFE55C] rounded-xl flex items-center justify-center text-primary-navy shadow-md">
+                    <Trophy className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-medium">Discover</span>
-                    <h4 className="font-serif font-bold text-lg leading-tight">Our Popular Service</h4>
+                    <h4 className="font-serif font-bold text-base leading-tight text-white">Our Popular Service</h4>
                   </div>
                 </div>
 
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
-                    <div className="w-8 h-8 rounded-full bg-[#2B809A]/20 flex items-center justify-center text-[#2B809A] group-hover:bg-[#2B809A] group-hover:text-white transition-colors">
-                      <BarChart className="w-4 h-4" />
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 p-1.5 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                    <div className="w-7 h-7 rounded-full bg-[#2B809A]/20 flex items-center justify-center text-[#2B809A] group-hover:bg-[#2B809A] group-hover:text-white transition-colors">
+                      <BarChart className="w-3.5 h-3.5" />
                     </div>
-                    <span className="font-medium text-sm text-gray-200 group-hover:text-white">Business Analysis</span>
+                    <span className="font-medium text-xs text-gray-200 group-hover:text-white">Business Analysis</span>
                   </li>
-                  <li className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
-                    <div className="w-8 h-8 rounded-full bg-[#FFE55C]/20 flex items-center justify-center text-[#FFE55C] group-hover:bg-[#FFE55C] group-hover:text-primary-navy transition-colors">
-                      <Lightbulb className="w-4 h-4" />
+                  <li className="flex items-center gap-2 p-1.5 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
+                    <div className="w-7 h-7 rounded-full bg-[#FFE55C]/20 flex items-center justify-center text-[#FFE55C] group-hover:bg-[#FFE55C] group-hover:text-primary-navy transition-colors">
+                      <Lightbulb className="w-3.5 h-3.5" />
                     </div>
-                    <span className="font-medium text-sm text-gray-200 group-hover:text-white">Experience Design</span>
+                    <span className="font-medium text-xs text-gray-200 group-hover:text-white">Experience Design</span>
                   </li>
                 </ul>
 
@@ -242,10 +245,94 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="max-w-5xl text-center"
         >
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-serif font-medium leading-tight text-primary-navy">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium leading-tight text-primary-navy">
             QualiPRO Consult is a <span className="text-gray-300">Strategic Quality Partner</span> which spreads across <span className="text-accent-teal font-bold">10+ Industries</span> and <span className="text-[#FFE55C] font-bold" style={{ textShadow: "0px 0px 1px rgba(0,0,0,0.1)" }}>500+ Experts</span> who speak the one language that matters — <span className="italic font-bold">Excellence.</span>
           </h2>
         </motion.div>
+      </section>
+
+      {/* NEW: WHY CHOOSE US SECTION */}
+      <section className="py-20 px-6 bg-white text-primary-navy max-w-4xl mx-auto">
+        <div className="container mx-auto max-w-7xl">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-2xl md:text-4xl font-serif font-bold mb-6">
+              Why choose <span className="text-accent-teal">QualiPRO?</span>
+            </h2>
+            <p className="text-gray-600 text-base leading-relaxed">
+              We believe quality partnership should amplify business potential, not complicate it.
+              That's why we provide consultation that feels intuitive, works flawlessly, and grows with you.
+            </p>
+          </motion.div>
+
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-12">
+
+            {/* Feature 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="space-y-4"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <Users className="w-5 h-5 text-accent-teal" />
+                <h3 className="text-lg font-bold">Client-Centric Approach</h3>
+              </div>
+              <div className="h-px w-full bg-gray-200" />
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We obsess over client satisfaction. Every strategy, every interaction is designed
+                to feel effortless and empower your team to do their best work.
+              </p>
+            </motion.div>
+
+            {/* Feature 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="space-y-4"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <TrendingUp className="w-5 h-5 text-[#FFE55C]" />
+                <h3 className="text-lg font-bold">Engineered for Growth</h3>
+              </div>
+              <div className="h-px w-full bg-gray-200" />
+              <p className="text-gray-600 text-sm leading-relaxed">
+                From local business to enterprise, our solutions grow with you. Built on secure,
+                reliable methodologies that handle whatever comes next.
+              </p>
+            </motion.div>
+
+            {/* Feature 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="space-y-4"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <Target className="w-5 h-5 text-accent-teal" />
+                <h3 className="text-lg font-bold">Your Success, Our Mission</h3>
+              </div>
+              <div className="h-px w-full bg-gray-200" />
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We're not just consultants—we're partners in your growth. We succeed when you
+                succeed, and we're committed to making that happen.
+              </p>
+            </motion.div>
+
+          </div>
+        </div>
       </section>
 
     </div>

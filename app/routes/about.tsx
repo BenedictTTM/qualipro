@@ -1,7 +1,234 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle, Users, Trophy } from "lucide-react";
+import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp } from "lucide-react";
 
+const SERVICES_DATA = [
+    {
+        title: "1. ISO Systems Consulting & Implementation",
+        content: "QualiPRO Consult supports organizations in the design, implementation, and improvement of management systems aligned with internationally recognized ISO standards. Our approach focuses on building systems that work in practice, not just on paper.",
+        sections: [
+            {
+                title: "Standards supported include:",
+                items: [
+                    "ISO 9001 – Quality Management Systems",
+                    "ISO/IEC 17025 – Testing and Calibration Laboratories",
+                    "ISO 22000 – Food Safety Management Systems",
+                    "ISO 13485 – Medical Devices – Quality Management Systems",
+                    "ISO 15189 – Medical Laboratories– Requirements for quality and competence",
+                    "ISO 14001 – Environmental Management Systems",
+                    "ISO 45001 – Occupational Health & Safety Management Systems"
+                ]
+            },
+            {
+                title: "What we deliver:",
+                items: [
+                    "Gap assessment and baseline analysis using the ACERT Tool",
+                    "System design and documentation tailored to your operations",
+                    "Hands-on implementation coaching and staff engagement",
+                    "Risk-based thinking, process mapping, and performance monitoring",
+                    "Internal audits and certification readiness reviews"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Faster and more efficient certification readiness",
+                    "Reduced rework, nonconformities, and compliance risks",
+                    "Stronger process control and operational consistency",
+                    "Quality systems that support business efficiency and profitability"
+                ]
+            }
+        ]
+    },
+    {
+        title: "2. GMP Consulting",
+        content: "QualiPRO Consult provides GMP consulting services to pharmaceutical, food, and medical device organizations to support compliance with Good Manufacturing Practice (GMP) and regulatory inspection requirements. Our approach combines practical training, implementation support, and inspection readiness activities to strengthen GMP systems and day-to-day operations.",
+        sections: [
+            {
+                title: "Scope of GMP consulting includes:",
+                items: [
+                    "GMP gap assessments and system reviews",
+                    "GMP training for management and operational staff",
+                    "On-site coaching and mentoring on GMP implementation",
+                    "Mock GMP inspections and inspection readiness assessments",
+                    "CAPA planning, execution, and follow-up verification",
+                    "Alignment with WHO, FDA Ghana, and other applicable regulatory frameworks"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Stronger GMP systems and compliance culture",
+                    "Reduced inspection findings and regulatory risk",
+                    "Improved product quality, consistency, and process control",
+                    "Reduced operational disruptions and compliance-related costs"
+                ]
+            }
+        ]
+    },
+    {
+        title: "3. Internal and External Audits & Compliance Assessments",
+        content: "QualiPRO Consult conducts independent internal audits and compliance assessments to verify system effectiveness and support continual improvement.",
+        sections: [
+            {
+                title: "Audit services include:",
+                items: [
+                    "Internal audits aligned with ISO 19011 guidelines",
+                    "Second party (Supplier) audits",
+                    "Compliance assessments and gap reviews",
+                    "CAPA verification and management review facilitation"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Early identification of gaps before external audits",
+                    "Sustained certification readiness",
+                    "Improved Supplier Performance and Selection",
+                    "Improved system effectiveness and management oversight"
+                ]
+            }
+        ]
+    },
+    {
+        title: "4. Training & Capacity Building (QualiPRO Training Series)",
+        content: "Through the QualiPRO Training Series, we deliver competency-based training programs that build in-house expertise and reduce long-term dependence on external consultants. Training is delivered through in-person, virtual, or hybrid formats and supported by post-training evaluations and follow-up coaching.",
+        sections: [
+            {
+                title: "Training areas include:",
+                items: [
+                    "ISO awareness, implementer, and internal auditor training",
+                    "Risk management, CAPA, and root cause analysis workshops",
+                    "GMP and quality culture development programs",
+                    "Laboratory systems training"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Stronger internal competence and ownership of quality systems",
+                    "Improved staff engagement and accountability",
+                    "Sustainable quality and compliance performance"
+                ]
+            }
+        ]
+    },
+    {
+        title: "5. Post-Certification & Continual Improvement Support",
+        content: "Certification is not the end of the quality journey. QualiPRO Consult provides ongoing support to help organizations maintain and improve their systems over time.",
+        sections: [
+            {
+                title: "Support includes:",
+                items: [
+                    "Surveillance and follow-up audit preparation",
+                    "Performance monitoring and KPI reviews",
+                    "Process optimization and risk updates",
+                    "Continual improvement planning and coaching"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Sustained compliance and audit readiness",
+                    "Reduced cost of poor quality",
+                    "Continuous performance improvement"
+                ]
+            }
+        ]
+    },
+    {
+        title: "6. Certification-Body Liaison & Advisory Services",
+        content: "We support organizations throughout the certification or accreditation process by acting as a technical liaison with certification and accreditation bodies.",
+        sections: [
+            {
+                title: "Services include:",
+                items: [
+                    "Preparation for Stage 1 and Stage 2 audits",
+                    "Support during external audits",
+                    "Response to findings and nonconformities",
+                    "CAPA implementation tracking"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Smoother audit processes",
+                    "Reduced delays and audit-related stress",
+                    "Higher likelihood of successful certification outcomes"
+                ]
+            }
+        ]
+    },
+    {
+        title: "7. Quality & Laboratory Systems Strengthening",
+        content: "Beyond organizational consulting, QualiPRO Consult supports public institutions, laboratories, and regulatory bodies in strengthening quality and regulatory systems.",
+        sections: [
+            {
+                title: "Areas of support include:",
+                items: [
+                    "ISO 17025 and laboratory accreditation assistance",
+                    "Regulatory and inspection system strengthening",
+                    "Development of quality manuals, audit tools, and guidelines",
+                    "Capacity-building programs for regulators and laboratories"
+                ]
+            },
+            {
+                title: "Client benefits:",
+                items: [
+                    "Stronger institutional systems",
+                    "Improved regulatory confidence and oversight",
+                    "Alignment with international best practices"
+                ]
+            }
+        ]
+    }
+];
+
+const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, onClick: () => void }) => {
+    return (
+        <div className="border border-white/10 rounded-lg overflow-hidden mb-4 bg-[#2a202a]">
+            <button
+                onClick={onClick}
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                aria-expanded={isOpen}
+            >
+                <span className="text-xl font-bold text-white pr-4">{item.title}</span>
+                {isOpen ? (
+                    <ChevronUp className="w-6 h-6 text-[#ff6b4a] shrink-0" />
+                ) : (
+                    <ChevronDown className="w-6 h-6 text-[#ff6b4a] shrink-0" />
+                )}
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <div className="p-6 pt-0 border-t border-white/10 text-white/80">
+                            <p className="mb-6 leading-relaxed text-white/90">{item.content}</p>
+                            {item.sections.map((section: any, idx: number) => (
+                                <div key={idx} className="mb-6 last:mb-0">
+                                    <h4 className="font-bold text-[#ff6b4a] mb-3">{section.title}</h4>
+                                    <ul className="space-y-2">
+                                        {section.items.map((subItem: string, sIdx: number) => (
+                                            <li key={sIdx} className="flex items-start gap-3 text-sm md:text-base">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b4a] mt-2 shrink-0" />
+                                                <span className="flex-1">{subItem}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 export function meta() {
     return [
         { title: "About Us - QualiPRO Consult" },
@@ -14,6 +241,7 @@ export default function About() {
     const [showVideo, setShowVideo] = useState(true);
     const [videoLoading, setVideoLoading] = useState(true);
     const [videoError, setVideoError] = useState(false);
+    const [openService, setOpenService] = useState<number | null>(null);
 
     useEffect(() => {
         // Safety fallback: if video doesn't load or play within 8 seconds, hide the overlay
@@ -187,10 +415,10 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="bg-[#6b4a52] p-8 md:p-12 rounded-lg"
+                            className=" p-8 md:p-12 rounded-lg"
                         >
                             <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Mission</h2>
-                            <p className="text-white text-lg font-light leading-relaxed">
+                            <p className="text-white text-md font-light leading-relaxed">
                                 To build a culture of quality and compliance that strengthens organizations through expert, hands-on consulting and training, enabling them to design, implement, and sustain effective management systems that support certification, regulatory compliance, and long-term business performance.
                             </p>
                         </motion.div>
@@ -201,11 +429,11 @@ export default function About() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="bg-[#4a3a4a] p-8 md:p-12 rounded-lg relative overflow-hidden"
+                            className=" p-8 md:p-12 rounded-lg relative overflow-hidden"
                         >
                             <div className="absolute top-0 right-0 p-32 bg-[#ff6b4a]/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
                             <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Vision</h2>
-                            <p className="text-white text-lg font-light leading-relaxed">
+                            <p className="text-white text-md font-light leading-relaxed">
                                 To be Africa’s most trusted consulting partner in quality, safety, and compliance systems—recognized for integrity, technical excellence, and measurable results that help organizations achieve sustainable growth and global standards.
                             </p>
                         </motion.div>
@@ -266,19 +494,41 @@ export default function About() {
                                 title: "Client Partnership",
                                 desc: "We work collaboratively with our clients, prioritizing knowledge transfer.",
                                 icon: <Users className="w-5 h-5 text-[#ff6b4a]" />,
-                                className: "md:col-span-1"
+                                className: "md:col-span-1",
+                                visual: (
+                                    <div className="flex items-center -space-x-2 mt-4">
+                                        <div className="w-6 h-6 rounded-full bg-[#ff6b4a]/20 border border-[#2a202a]" />
+                                        <div className="w-6 h-6 rounded-full bg-white/20 border border-[#2a202a]" />
+                                        <div className="w-6 h-6 rounded-full bg-white/10 border border-[#2a202a]" />
+                                    </div>
+                                )
                             },
                             {
                                 title: "Continuous Improvement",
                                 desc: "We promote a culture of learning and ongoing improvement.",
                                 icon: <CheckCircle className="w-5 h-5 text-[#ff6b4a]" />,
-                                className: "md:col-span-1"
+                                className: "md:col-span-1",
+                                visual: (
+                                    <div className="mt-4 flex items-center gap-3">
+                                        <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                            <div className="h-full w-2/3 bg-[#ff6b4a] rounded-full" />
+                                        </div>
+                                    </div>
+                                )
                             },
                             {
                                 title: "Impact & Sustainability",
                                 desc: "We aim to deliver lasting value by helping organizations reduce risk and improve efficiency.",
                                 icon: <Trophy className="w-5 h-5 text-[#ff6b4a]" />,
-                                className: "md:col-span-1"
+                                className: "md:col-span-1",
+                                visual: (
+                                    <div className="flex items-end gap-1 mt-4 h-6">
+                                        <div className="w-1/4 h-1/3 bg-white/10 rounded-sm" />
+                                        <div className="w-1/4 h-2/3 bg-white/10 rounded-sm" />
+                                        <div className="w-1/4 h-1/2 bg-white/10 rounded-sm" />
+                                        <div className="w-1/4 h-full bg-[#ff6b4a] rounded-sm" />
+                                    </div>
+                                )
                             }
                         ].map((value, index) => (
                             <motion.div
@@ -287,7 +537,7 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className={`bg-[#2a202a] border border-white/5 p-5 rounded-xl hover:border-[#ff6b4a]/30 transition-all duration-300 group flex flex-col justify-between ${value.className || ""}`}
+                                className={`bg-[#2a202a] border border-white/5 p-5 rounded-lg hover:border-[#ff6b4a]/30 transition-all duration-300 group flex flex-col justify-between ${value.className || ""}`}
                             >
                                 <div>
                                     <div className="w-10 h-10 flex items-center justify-center mb-3  transition-colors duration-300">
@@ -303,11 +553,45 @@ export default function About() {
                                     </div>
                                 </div>
 
+                                {value.visual && (
+                                    <div className="mt-2 text-white/20">
+                                        {value.visual}
+                                    </div>
+                                )}
+
                                 {/* Decorative corner for the large card */}
                                 {index === 0 && (
                                     <div className="hidden md:block absolute bottom-0 right-0 p-16 bg-gradient-to-tl from-[#ff6b4a]/5 to-transparent rounded-tl-[80px] pointer-events-none"></div>
                                 )}
                             </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Services Accordion Section */}
+                <section className="px-6 md:px-12 pb-32 max-w-5xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-12 text-center"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-light text-white mb-4">
+                            Our <span className="font-bold text-[#ff6b4a]">Services</span>
+                        </h2>
+                        <p className="text-white/60 max-w-2xl mx-auto text-lg font-light">
+                            QualiPRO Consult provides quality management, compliance, and capacity-building services designed to improve operational efficiency and strengthen business profitability.
+                        </p>
+                    </motion.div>
+
+                    <div className="space-y-4">
+                        {SERVICES_DATA.map((service, index) => (
+                            <AccordionItem
+                                key={index}
+                                item={service}
+                                isOpen={openService === index}
+                                onClick={() => setOpenService(openService === index ? null : index)}
+                            />
                         ))}
                     </div>
                 </section>

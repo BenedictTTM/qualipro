@@ -101,11 +101,11 @@ export default function Home() {
               Smooth <HighlightText>Business</HighlightText> Starts With <br className="hidden lg:block mb-4" />
               <HighlightText>Good Service Consultation</HighlightText>
               <span className="text-accent-teal inline-block ml-4 align-top animate-pulse">
-                <Sparkles className="w-8 h-8 md:w-12 md:h-12 text-[#2B809A]" />
+                <Sparkles className="w-4 h-5 md:w-6 md:h-6 text-[#2B809A]" />
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mt-8 font-light leading-relaxed">
+            <p className="text-md md:text-lg text-gray-500 max-w-2xl mx-auto mt-8 font-light leading-relaxed">
               With QualiPRO we are prepared to guarantee your business advancement and increment business deals today.
             </p>
           </motion.div>

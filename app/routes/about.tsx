@@ -137,96 +137,207 @@ export default function About() {
 
             {/* 
         MAIN PAGE CONTENT
-        This content is rendered underneath the fixed video overlay.
-        When the overlay slides away, this remains visible.
       */}
-            <div className="relative z-0">
+            <div className="relative z-0 bg-[#3d2f3f] min-h-screen">
 
-                {/* Hero / Header Section of About Page */}
-                <section className="relative pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+                {/* Header */}
+                <section className="pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+                    <h1 className="text-5xl md:text-6xl font-light text-white mb-8">About QualiPRO</h1>
+                </section>
+
+                {/* About Us Content */}
+                <section className="px-6 md:px-12 max-w-7xl mx-auto pb-20">
                     <motion.div
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={!showVideo ? { opacity: 1, x: 0 } : {}} // Animate in slightly when video leaves
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="grid md:grid-cols-2 gap-12 items-center"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={!showVideo ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="grid md:grid-cols-2 gap-12 items-start"
                     >
-                        <div>
-                            <span className="text-accent-teal font-bold tracking-wider uppercase text-sm mb-2 block">
-                                Who We Are
-                            </span>
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary-navy mb-6 leading-tight">
-                                Driving Excellence in <br className="hidden md:block" /> Business Consultation
-                            </h2>
-                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                At QualiPRO, we don't just advise; we partner with you to engineer success.
-                                With over a decade of experience across 10+ industries, our experts speak
-                                the language of growth, efficiency, and innovation.
+                        <div className="space-y-6 text-white/90 text-lg font-light leading-relaxed">
+                            <p>
+                                <strong className="text-[#ff6b4a] font-normal">QualiPRO Consult</strong> is a quality management systems, compliance, and training consultancy dedicated to supporting organizations in the design, implementation, and sustainability of internationally recognized management systems and regulatory frameworks. The firm provides technical consulting and capacity-building services aligned with ISO standards, Good Manufacturing Practice (GMP), and related regulatory requirements across manufacturing, healthcare, laboratories, and service sectors.
                             </p>
-
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-accent-teal/10 flex items-center justify-center text-accent-teal">
-                                        <CheckCircle className="w-5 h-5" />
-                                    </div>
-                                    <span className="font-medium text-gray-700">Strategic Implementation Plans</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
-                                        <Users className="w-5 h-5" />
-                                    </div>
-                                    <span className="font-medium text-gray-700">Dedicated Expert Teams</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                                        <Trophy className="w-5 h-5" />
-                                    </div>
-                                    <span className="font-medium text-gray-700">Award-Winning Methodology</span>
-                                </div>
-                            </div>
-
-                            <div className="mt-10">
-                                <button className="px-8 py-3 bg-primary-navy text-white rounded-full font-semibold hover:bg-opacity-90 transition-all flex items-center gap-2 group">
-                                    Learn Our Story
-                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </button>
-                            </div>
+                            <p>
+                                Guided by the principle <em className="text-white">“Quality Beyond Certification,”</em> QualiPRO Consult focuses on building practical, functional, and sustainable systems that extend beyond audit preparation. Its approach emphasizes real implementation—helping organizations embed quality into daily operations to improve compliance, operational efficiency, and decision-making.
+                            </p>
+                            <p>
+                                By strengthening process control, reducing nonconformities, and minimizing the cost of poor quality, QualiPRO Consult enables organizations to use quality management as a strategic business tool. Clients benefit not only from successful certification or regulatory approval but also from improved productivity, reduced risk, enhanced customer confidence, and long-term business profitability.
+                            </p>
                         </div>
 
-                        {/* Right Side Image/Visual */}
                         <div className="relative">
-                            <div className="aspect-[4/5] md:aspect-square rounded-2xl bg-gray-100 overflow-hidden relative shadow-2xl">
+                            <div className="aspect-[4/3] bg-gray-300 rounded-lg overflow-hidden relative">
                                 <img
                                     src="/people.png"
-                                    alt="Our Team"
-                                    className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                                    alt="QualiPRO Consulting Team"
+                                    className="w-full h-full object-cover opacity-80"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-primary-navy/40 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#3d2f3f] via-transparent to-transparent opacity-60"></div>
                             </div>
-
-                            {/* Floating Stat */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.8 }}
-                                className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border border-gray-100 max-w-xs"
-                            >
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="flex -space-x-2">
-                                        {[1, 2, 3].map(i => (
-                                            <div key={i} className={`w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden`}>
-                                                {/* Placeholder avatar */}
-                                                <div className="w-full h-full bg-gray-400" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <span className="text-xs font-bold text-gray-500">+500 Experts</span>
-                                </div>
-                                <p className="text-sm font-medium text-primary-navy">
-                                    "Collaboration is the key to unlocking potential."
-                                </p>
-                            </motion.div>
                         </div>
                     </motion.div>
+                </section>
+
+                {/* Mission & Vision */}
+                <section className="px-6 md:px-12 max-w-7xl mx-auto pb-24">
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {/* Mission */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="bg-[#6b4a52] p-8 md:p-12 rounded-lg"
+                        >
+                            <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Mission</h2>
+                            <p className="text-white text-lg font-light leading-relaxed">
+                                To build a culture of quality and compliance that strengthens organizations through expert, hands-on consulting and training, enabling them to design, implement, and sustain effective management systems that support certification, regulatory compliance, and long-term business performance.
+                            </p>
+                        </motion.div>
+
+                        {/* Vision */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                            className="bg-[#4a3a4a] p-8 md:p-12 rounded-lg relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 p-32 bg-[#ff6b4a]/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                            <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Vision</h2>
+                            <p className="text-white text-lg font-light leading-relaxed">
+                                To be Africa’s most trusted consulting partner in quality, safety, and compliance systems—recognized for integrity, technical excellence, and measurable results that help organizations achieve sustainable growth and global standards.
+                            </p>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* Core Values */}
+                <section className="px-6 md:px-12  pb-32 ">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-12"
+                    >
+                        <h2 className="text-4xl md:text-5xl font-light text-white mb-2">Core Values</h2>
+                        <div className="h-1 w-24 bg-[#ff6b4a] mt-4"></div>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-2 relative z-10 auto-rows-[minmax(110px,auto)] max-w-4xl mx-auto">
+                        {[
+                            {
+                                title: "Integrity & Independence",
+                                desc: (
+                                    <>
+                                        We deliver ethical, objective, and confidential services, maintaining professional independence and earning the trust of our clients and stakeholders.
+                                        <ul className="mt-4 space-y-2 list-none">
+                                            <li className="flex items-center gap-2">
+                                                <div className="min-w-1.5 h-1.5 rounded-full bg-[#ff6b4a]" />
+                                                <span><strong>Ethical Delivery:</strong> Unwavering commitment to honesty.</span>
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <div className="min-w-1.5 h-1.5 rounded-full bg-[#ff6b4a]" />
+                                                <span><strong>Objective Advice:</strong> Unbiased, fact-based solutions.</span>
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <div className="min-w-1.5 h-1.5 rounded-full bg-[#ff6b4a]" />
+                                                <span><strong>Total Confidentiality:</strong> Strict protection of your data.</span>
+                                            </li>
+                                        </ul>
+                                    </>
+                                ),
+                                icon: <CheckCircle className="w-6 h-6 text-[#ff6b4a]" />,
+                                className: "md:col-span-2 md:row-span-2"
+                            },
+                            {
+                                title: "Technical Excellence",
+                                desc: "Our work is grounded in internationally recognized standards.",
+                                icon: <Trophy className="w-5 h-5 text-[#ff6b4a]" />,
+                                className: "md:col-span-1"
+                            },
+                            {
+                                title: "Practical Implementation",
+                                desc: "We focus on solutions that work in practice—building functional systems that are embedded in daily operations.",
+                                icon: <Users className="w-5 h-5 text-[#ff6b4a]" />,
+                                className: "md:col-span-1"
+                            },
+                            {
+                                title: "Client Partnership",
+                                desc: "We work collaboratively with our clients, prioritizing knowledge transfer.",
+                                icon: <Users className="w-5 h-5 text-[#ff6b4a]" />,
+                                className: "md:col-span-1"
+                            },
+                            {
+                                title: "Continuous Improvement",
+                                desc: "We promote a culture of learning and ongoing improvement.",
+                                icon: <CheckCircle className="w-5 h-5 text-[#ff6b4a]" />,
+                                className: "md:col-span-1"
+                            },
+                            {
+                                title: "Impact & Sustainability",
+                                desc: "We aim to deliver lasting value by helping organizations reduce risk and improve efficiency.",
+                                icon: <Trophy className="w-5 h-5 text-[#ff6b4a]" />,
+                                className: "md:col-span-1"
+                            }
+                        ].map((value, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className={`bg-[#2a202a] border border-white/5 p-5 rounded-xl hover:border-[#ff6b4a]/30 transition-all duration-300 group flex flex-col justify-between ${value.className || ""}`}
+                            >
+                                <div>
+                                    <div className="w-10 h-10 flex items-center justify-center mb-3  transition-colors duration-300">
+                                        <div className="text-[#ff6b4a] group-hover:text-white transition-colors duration-300">
+                                            {value.icon}
+                                        </div>
+                                    </div>
+                                    <h3 className={`font-bold text-white mb-2 group-hover:text-[#ff6b4a] transition-colors ${index === 0 ? "text-2xl" : "text-lg"}`}>
+                                        {value.title}
+                                    </h3>
+                                    <div className={`text-white/60 leading-relaxed group-hover:text-white/80 transition-colors ${index === 0 ? "text-sm" : "text-[10px] leading-tight"}`}>
+                                        {value.desc}
+                                    </div>
+                                </div>
+
+                                {/* Decorative corner for the large card */}
+                                {index === 0 && (
+                                    <div className="hidden md:block absolute bottom-0 right-0 p-16 bg-gradient-to-tl from-[#ff6b4a]/5 to-transparent rounded-tl-[80px] pointer-events-none"></div>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Final Call to Action Section */}
+                <section className="bg-[#f9f5f6] py-32 px-6 md:px-12">
+                    <div className="max-w-7xl mx-auto text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-[#3d2f3f] leading-tight mb-8 max-w-4xl mx-auto">
+                                Ready to transform your quality management?
+                            </h2>
+                            <p className="text-lg text-[#3d2f3f]/70 mb-12 max-w-2xl mx-auto">
+                                Partner with QualiPRO Consult for expert guidance in compliance, training, and sustainable system implementation.
+                            </p>
+
+                            <button className="group inline-flex items-center shadow-xl hover:shadow-2xl transition-shadow">
+                                <span className="bg-[#ff6b4a] text-white px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-[#ff8a6a] transition-colors">
+                                    Contact Us Today
+                                </span>
+                                <span className="bg-white text-[#ff6b4a] px-5 py-4 border border-l-0 border-[#ff6b4a]/20 group-hover:bg-[#fff5f2] transition-colors">
+                                    <ArrowRight className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
+                                </span>
+                            </button>
+                        </motion.div>
+                    </div>
                 </section>
 
             </div>

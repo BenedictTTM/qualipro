@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp, Crosshair, Eye } from "lucide-react";
 
 const SERVICES_DATA = [
     {
@@ -186,17 +186,17 @@ const SERVICES_DATA = [
 
 const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, onClick: () => void }) => {
     return (
-        <div className="border border-white/10 rounded-lg overflow-hidden mb-4 bg-[#2a202a]">
+        <div className="border border-white/10 rounded-lg overflow-hidden mb-2 bg-[#2a202a]">
             <button
                 onClick={onClick}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors"
                 aria-expanded={isOpen}
             >
-                <span className="text-xl font-bold text-white pr-4">{item.title}</span>
+                <span className="text-sm md:text-base font-bold text-white pr-4">{item.title}</span>
                 {isOpen ? (
-                    <ChevronUp className="w-6 h-6 text-[#ff6b4a] shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-[#ff6b4a] shrink-0" />
                 ) : (
-                    <ChevronDown className="w-6 h-6 text-[#ff6b4a] shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-[#ff6b4a] shrink-0" />
                 )}
             </button>
             <AnimatePresence>
@@ -207,15 +207,15 @@ const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, 
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                        <div className="p-6 pt-0 border-t border-white/10 text-white/80">
-                            <p className="mb-6 leading-relaxed text-white/90">{item.content}</p>
+                        <div className="p-4 pt-0 border-t border-white/10 text-white/80">
+                            <p className="mb-4 leading-relaxed text-xs md:text-sm text-white/90">{item.content}</p>
                             {item.sections.map((section: any, idx: number) => (
-                                <div key={idx} className="mb-6 last:mb-0">
-                                    <h4 className="font-bold text-[#ff6b4a] mb-3">{section.title}</h4>
-                                    <ul className="space-y-2">
+                                <div key={idx} className="mb-4 last:mb-0">
+                                    <h4 className="font-bold text-[#ff6b4a] mb-2 text-xs md:text-sm">{section.title}</h4>
+                                    <ul className="space-y-1">
                                         {section.items.map((subItem: string, sIdx: number) => (
-                                            <li key={sIdx} className="flex items-start gap-3 text-sm md:text-base">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-[#ff6b4a] mt-2 shrink-0" />
+                                            <li key={sIdx} className="flex items-start gap-2 text-xs text-white/70">
+                                                <span className="w-1 h-1 rounded-full bg-[#ff6b4a] mt-1.5 shrink-0" />
                                                 <span className="flex-1">{subItem}</span>
                                             </li>
                                         ))}
@@ -407,36 +407,57 @@ export default function About() {
                 </section>
 
                 {/* Mission & Vision */}
-                <section className="px-6 md:px-12 max-w-7xl mx-auto pb-24">
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {/* Mission */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className=" p-8 md:p-12 rounded-lg"
-                        >
-                            <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Mission</h2>
-                            <p className="text-white text-md font-light leading-relaxed">
-                                To build a culture of quality and compliance that strengthens organizations through expert, hands-on consulting and training, enabling them to design, implement, and sustain effective management systems that support certification, regulatory compliance, and long-term business performance.
-                            </p>
-                        </motion.div>
+                {/* Mission & Vision */}
+                <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
+                    <div className="flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden">
+                        {/* Left Image */}
+                        <div className="w-full lg:w-1/2 relative z-10">
+                            <div className="rounded-2xl overflow-hidden h-[500px] shadow-lg border border-white/10">
+                                <img
+                                    src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768484595/industrial-designers-working-3d-model_1_1_ale0hg.jpg"
+                                    alt="Team working"
+                                    className="w-full h-full object-cover opacity-90"
+                                />
+                            </div>
+                        </div>
 
-                        {/* Vision */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className=" p-8 md:p-12 rounded-lg relative overflow-hidden"
-                        >
-                            <div className="absolute top-0 right-0 p-32 bg-[#ff6b4a]/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-                            <h2 className="text-2xl md:text-3xl font-serif text-[#ff6b4a] mb-6">Our Vision</h2>
-                            <p className="text-white text-md font-light leading-relaxed">
-                                To be Africa’s most trusted consulting partner in quality, safety, and compliance systems—recognized for integrity, technical excellence, and measurable results that help organizations achieve sustainable growth and global standards.
-                            </p>
-                        </motion.div>
+                        {/* Right Content */}
+                        <div className="w-full lg:w-1/2 space-y-12 relative z-10">
+
+                            {/* Mission */}
+                            <div>
+                                <div className="flex items-center justify-end gap-6 mb-6">
+                                    <Crosshair className="w-16 h-16 text-[#ff6b4a]" strokeWidth={1.5} />
+                                    <div className="text-right">
+                                        <h2 className="text-4xl md:text-5xl font-bold text-white leading-none">
+                                            Our<br />Mission
+                                        </h2>
+                                    </div>
+                                </div>
+                                <p className="text-gray-300 text-right text-sm md:text-sm leading-relaxed pl-10">
+                                    To provide compassionate, high-quality home health care that enhances well-being, independence, and quality of life, with personalized care, professionalism, respect, and excellence.
+                                </p>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="w-full h-px bg-white/10" />
+
+                            {/* Vision */}
+                            <div>
+                                <div className="flex items-center justify-between mb-6">
+                                    <div>
+                                        <h2 className="text-4xl md:text-5xl font-bold text-white leading-none text-left">
+                                            Our<br />Vision
+                                        </h2>
+                                    </div>
+                                    <Eye className="w-16 h-16 text-[#ff6b4a]" strokeWidth={1.5} />
+                                </div>
+                                <p className="text-gray-300 text-left text-sm md:text-sm leading-relaxed pr-10">
+                                    To be a leader in home health care, providing compassionate care, innovative solutions, and client-focused support for dignified, comfortable, and independent living.
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
 
@@ -569,22 +590,22 @@ export default function About() {
                 </section>
 
                 {/* Services Accordion Section */}
-                <section className="px-6 md:px-12 pb-32 max-w-5xl mx-auto">
+                <section className="px-6 md:px-12 pb-20 max-w-4xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mb-12 text-center"
+                        className="mb-8 text-center"
                     >
-                        <h2 className="text-4xl md:text-5xl font-light text-white mb-4">
+                        <h2 className="text-2xl md:text-4xl font-light text-white mb-2">
                             Our <span className="font-bold text-[#ff6b4a]">Services</span>
                         </h2>
-                        <p className="text-white/60 max-w-2xl mx-auto text-lg font-light">
+                        <p className="text-white/60 max-w-xl mx-auto text-sm font-light">
                             QualiPRO Consult provides quality management, compliance, and capacity-building services designed to improve operational efficiency and strengthen business profitability.
                         </p>
                     </motion.div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                         {SERVICES_DATA.map((service, index) => (
                             <AccordionItem
                                 key={index}

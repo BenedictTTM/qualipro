@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp, Crosshair, Eye, X } from "lucide-react";
 import type { Route } from "./+types/about";
+import { Link } from "react-router";
 
 // Optimized Video URL with Cloudinary transformations
 // w_1280: Resize width to 1280px (720p/1080p ish balance)
@@ -669,14 +670,14 @@ export default function About() {
                                 Partner with QualiPRO Consult for expert guidance in compliance, training, and sustainable system implementation.
                             </p>
 
-                            <button className="group inline-flex items-center shadow-xl hover:shadow-2xl transition-shadow">
+                            <Link to="/contact" className="group inline-flex items-center shadow-xl hover:shadow-2xl transition-shadow">
                                 <span className="bg-[#FFE55C] text-primary-navy px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-white border border-[#FFE55C] hover:text-primary-navy transition-colors">
                                     Contact Us Today
                                 </span>
                                 <span className="bg-primary-navy text-[#FFE55C] px-5 py-4 border border-l-0 border-[#FFE55C]/20 group-hover:bg-[#FFE55C] group-hover:text-primary-navy transition-colors">
                                     <ArrowRight className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
                                 </span>
-                            </button>
+                            </Link>
                         </motion.div>
                     </div>
                 </section>

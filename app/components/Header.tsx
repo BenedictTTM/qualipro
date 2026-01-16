@@ -51,7 +51,7 @@ export function Header() {
             >
                 <nav
                     className={`flex items-center justify-between px-4 md:px-6 py-2 md:py-3 transition-all duration-300 ${isScrolled
-                        ? "bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200"
+                        ? "bg-white/90 backdrop-blur-md rounded-full shadow-sm border border-gray-200"
                         : "bg-transparent"
                         }`}
                 >
@@ -108,48 +108,82 @@ export function Header() {
                     </button>
                 </nav>
 
-                {/* Mobile Menu */}
+                {/* Mobile Menu - Side Drawer */}
                 {isOpen && (
                     <div className="md:hidden fixed inset-0 z-40" role="dialog" aria-modal="true">
                         {/* backdrop - clicking closes */}
                         <div
-                            className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
                             onClick={closeMenu}
                         />
 
-                        {/* panel */}
-                        <div className="absolute top-[68px] left-4 right-4 mx-auto max-w-md">
-                            <div
-                                className="bg-gradient-to-b from-[#07172b] to-[#0b2540] rounded-xl shadow-2xl p-5 ring-1 ring-white/5 transform transition duration-250"
-                                onClick={(e) => e.stopPropagation()}
-                            >
-                                <div className="flex justify-end">
-                                    <button onClick={closeMenu} aria-label="Close menu" className="p-2">
-                                        <X className="h-5 w-5 text-white/90" />
+                        {/* Side drawer panel */}
+                        <div
+                            className="absolute inset-y-0 left-0 w-[85%] max-w-sm bg-primary-navy shadow-2xl transform transition-transform duration-300 ease-out animate-[slideInFromLeft_0.3s_ease-out]"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="flex flex-col h-full">
+                                {/* Header with logo and close button */}
+                                <div className="flex items-center justify-between p-6 pb-8">
+                                    <Link to="/" onClick={closeMenu}>
+                                        <img
+                                            src="/logo.png"
+                                            alt="QualiPRO Consult"
+                                            className="h-10 w-auto object-contain"
+                                        />
+                                    </Link>
+                                    <button
+                                        onClick={closeMenu}
+                                        aria-label="Close menu"
+                                        className="p-2 rounded-lg hover:bg-white/5 active:bg-white/10 transition-all duration-200"
+                                    >
+                                        <X className="h-6 w-6 text-white/80" />
                                     </button>
                                 </div>
 
-                                <nav className="mt-1 flex flex-col">
-                                    {navItems.map((item) => (
-                                        <Link
+                                {/* Navigation */}
+                                <nav className="flex-1 px-6 space-y-1">
+                                    {navItems.map((item, index) => (
+                                        <NavLink
                                             key={item.to}
                                             to={item.to}
                                             onClick={closeMenu}
-                                            className="block text-white text-lg py-3 px-3 rounded-md text-center font-medium hover:bg-white/5 transition"
+                                            style={{ animationDelay: `${index * 0.05}s` }}
+                                            className={({ isActive }) => `
+                                                flex items-center gap-3 text-white text-base py-3.5 px-4 rounded-lg font-medium
+                                                transition-all duration-200 animate-[slideInFromLeft_0.4s_ease-out_both]
+                                                ${isActive
+                                                    ? 'bg-white/10'
+                                                    : 'hover:bg-white/5 active:bg-white/10'
+                                                }
+                                            `}
                                         >
-                                            {item.label}
-                                        </Link>
+                                            {({ isActive }) => (
+                                                <>
+                                                    {/* Active indicator dot */}
+                                                    <span className={`w-2 h-2 rounded-full transition-colors duration-200 ${isActive ? 'bg-[#FFE55C]' : 'bg-transparent'
+                                                        }`} />
+                                                    <span>{item.label}</span>
+                                                </>
+                                            )}
+                                        </NavLink>
                                     ))}
+                                </nav>
 
-                                    <Link to="/contact" onClick={closeMenu} className="mt-4">
+                                {/* CTA at bottom */}
+                                <div className="p-6 pt-4">
+                                    <Link
+                                        to="/contact"
+                                        onClick={closeMenu}
+                                    >
                                         <button
                                             type="button"
-                                            className="w-full bg-white text-blue-900 font-semibold px-4 py-3 rounded-lg shadow cursor-pointer"
+                                            className="w-full bg-white text-primary-navy font-bold px-5 py-3.5 rounded-lg shadow-lg hover:bg-gray-100 active:bg-gray-200 transition-all duration-200 cursor-pointer"
                                         >
                                             Get in Touch
                                         </button>
                                     </Link>
-                                </nav>
+                                </div>
                             </div>
                         </div>
                     </div>

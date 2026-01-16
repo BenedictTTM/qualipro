@@ -396,19 +396,28 @@ export default function About() {
         MAIN PAGE CONTENT
       */}
             <div className="relative z-0 bg-primary-navy min-h-screen">
+                {/* Mobile Background Image */}
+                <div className=" absolute top-0 left-0 w-full h-[60vh] lg:hidden z-0 pointer-events-none">
+                    <img
+                        src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768485715/pexels-august-de-richelieu-4427615_nscdgt.jpg"
+                        alt="QualiPRO Consulting Team"
+                        className="w-full h-full object-cover opacity-80"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary-navy/40 via-primary-navy/80 to-primary-navy"></div>
+                </div>
 
                 {/* Header */}
-                <section className="pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+                <section className="relative z-10 pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
                     <h1 className="text-5xl md:text-6xl font-light text-white mb-8">About QualiPRO</h1>
                 </section>
 
                 {/* About Us Content */}
-                <section className="px-6 md:px-12 max-w-5xl mx-auto pb-20">
+                <section className="relative z-10 px-6 md:px-12 max-w-5xl mx-auto pb-20">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={!showVideo ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="grid md:grid-cols-2 gap-12 items-center"
+                        className="grid lg:grid-cols-2 gap-12 items-center"
                     >
                         <div className="space-y-6 text-white/90 text-md font-light leading-relaxed">
                             <p>
@@ -419,7 +428,7 @@ export default function About() {
                             </p>
                         </div>
 
-                        <div className="relative">
+                        <div className="relative hidden lg:block">
                             <div className="aspect-[4/4] bg-gray-300 rounded-lg overflow-hidden relative shadow-xl">
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768485715/pexels-august-de-richelieu-4427615_nscdgt.jpg"
@@ -437,7 +446,7 @@ export default function About() {
                 <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
                     <div className="flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden">
                         {/* Left Image */}
-                        <div className="w-full lg:w-1/2 relative z-10">
+                        <div className="hidden lg:block w-full lg:w-1/2 relative z-10">
                             <div className="rounded-2xl overflow-hidden h-[500px] shadow-lg border border-white/10">
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768484595/industrial-designers-working-3d-model_1_1_ale0hg.jpg"

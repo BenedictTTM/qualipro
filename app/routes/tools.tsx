@@ -133,22 +133,22 @@ const StepCard = ({ step, index }: { step: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative flex flex-col md:flex-row gap-8 items-start p-8 rounded-2xl   transition-all duration-300 hover:shadow-xs"
+            className="group relative flex flex-col md:flex-row gap-6 md:gap-8 items-start p-6 md:p-8 rounded-2xl transition-all duration-300 hover:shadow-xs bg-white border border-gray-100/50 hover:border-gray-200"
         >
             {/* Number & Icon */}
-            <div className="shrink-0 relative">
-                <div className="text-8xl font-bold text-gray-100 group-hover:text-accent-teal/10 transition-colors pointer-events-none select-none">
+            <div className="shrink-0 relative flex items-center md:block">
+                <div className="text-6xl md:text-8xl font-bold text-gray-100 group-hover:text-accent-teal/10 transition-colors pointer-events-none select-none">
                     {step.step}
                 </div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full border border-gray-100 flex items-center justify-center text-accent-teal group-hover:scale-110 transition-transform shadow-sm">
-                    <step.icon className="w-6 h-6" />
+                <div className="absolute top-1/2 left-12 md:left-1/2 -translate-y-1/2 md:-translate-x-1/2 w-12 h-12 bg-white rounded-full border border-gray-100 flex items-center justify-center text-accent-teal group-hover:scale-110 transition-transform shadow-sm ml-4 md:ml-0">
+                    <step.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
             </div>
 
             {/* Content */}
-            <div className="space-y-3">
-                <h3 className="text-xl font-bold text-primary-navy font-serif">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm md:text-sm">
+            <div className="space-y-2 md:space-y-3 pt-2">
+                <h3 className="text-lg md:text-xl font-bold text-primary-navy font-serif">{step.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm">
                     {step.desc}
                 </p>
             </div>
@@ -168,16 +168,16 @@ const ToolCard = ({ tool, index }: { tool: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="flex flex-col lg:flex-row  overflow-hidden  hover:border-gray-600 transition-colors group"
+            className="flex flex-col lg:flex-row overflow-hidden hover:border-gray-700 transition-colors group rounded-xl border border-white/3"
         >
             {/* Left: Identity */}
-            <div className="lg:w-2/5 p-8 md:p-12 bg-gradient-to-br from-white/5 to-transparent flex flex-col justify-between relative overflow-hidden">
-                <div className="relative z-10 pointer-events-none">
-                    <div className="w-16 h-16  flex items-center justify-center mb-8   text-accent-teal transition-colors duration-300">
-                        <tool.icon className="w-8 h-8" />
+            <div className="lg:w-2/5 p-6 md:p-8 lg:p-12  flex flex-col justify-between relative overflow-hidden">
+                <div className="relative z-10 md:pointer-events-none">
+                    <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center mb-6 md:mb-8 text-accent-teal transition-colors duration-300">
+                        <tool.icon className="w-6 h-6 md:w-8 md:h-8" />
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-2">{tool.name}</h3>
-                    <p className="text-accent-teal font-medium mb-6 text-sm uppercase tracking-wider">{tool.fullName}</p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{tool.name}</h3>
+                    <p className="text-accent-teal font-medium mb-4 md:mb-6 text-xs md:text-sm uppercase tracking-wider">{tool.fullName}</p>
                     <p className="text-gray-400 text-sm leading-relaxed">
                         {tool.description}
                     </p>
@@ -188,11 +188,11 @@ const ToolCard = ({ tool, index }: { tool: any, index: number }) => {
             </div>
 
             {/* Right: Details */}
-            <div className="lg:w-3/5 p-8 md:p-12 bg-primary-navy/50 border-t lg:border-t-0 lg:border-l border-gray-700 flex flex-col gap-8">
+            <div className="lg:w-3/5 p-6 md:p-8 lg:p-12 bg-primary-navy/50 border-t lg:border-t-0 lg:border-l border-gray-700 flex flex-col gap-8">
 
                 {/* What it does */}
                 <div>
-                    <h4 className="flex items-center gap-2 text-[#FFE55C] font-bold text-sm uppercase tracking-wider mb-4">
+                    <h4 className="flex items-center gap-2 text-[#FFE55C] font-bold text-xs md:text-sm uppercase tracking-wider mb-4">
                         <Layout className="w-4 h-4" />
                         What {tool.name} does
                     </h4>
@@ -208,7 +208,7 @@ const ToolCard = ({ tool, index }: { tool: any, index: number }) => {
 
                 {/* Business Value */}
                 <div>
-                    <h4 className="flex items-center gap-2 text-accent-teal font-bold text-sm uppercase tracking-wider mb-4">
+                    <h4 className="flex items-center gap-2 text-accent-teal font-bold text-xs md:text-sm uppercase tracking-wider mb-4">
                         <TrendingUp className="w-4 h-4" />
                         Business Value
                     </h4>
@@ -233,7 +233,7 @@ export default function Tools() {
         <div className="w-full bg-white font-sans text-primary-navy">
 
             {/* HERO SECTION */}
-            <section className="relative pt-32 pb-24 px-6 bg-primary-navy text-white overflow-hidden">
+            <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-6 bg-primary-navy text-white overflow-hidden">
                 {/* Background Pattern */}
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
@@ -252,10 +252,10 @@ export default function Tools() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight">
+                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 md:mb-8 leading-tight">
                             Tools & <span className="text-accent-teal italic">Methodology</span>
                         </h1>
-                        <p className="text-md md:text-md text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+                        <p className="text-base md:text-md text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
                             At QualiPRO Consult, we combine hands-on consulting with proprietary, data-driven tools to help organizations move beyond checklist compliance and build quality systems that deliver measurable operational and business value.
                         </p>
                     </motion.div>
@@ -263,19 +263,19 @@ export default function Tools() {
             </section>
 
             {/* METHODOLOGY SECTION */}
-            <section className="py-24 px-6 bg-slate-50">
+            <section className="py-16 md:py-24 px-4 md:px-6 bg-slate-50">
                 <div className="container mx-auto max-w-5xl">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-12 md:mb-16">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">Our Process</h2>
-                            <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary-navy mb-6">
+                            <h2 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">Our Process</h2>
+                            <h3 className="text-2xl md:text-4xl font-serif font-bold text-primary-navy mb-4 md:mb-6">
                                 Implementation <HighlightText>Methodology</HighlightText>
                             </h3>
-                            <p className="text-gray-600 max-w-2xl mx-auto text-md md:text-md">
+                            <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
                                 Our methodology is structured, practical, and results-oriented—ensuring that quality management systems are not only compliant, but effective, sustainable, and aligned with business objectives.
                             </p>
                         </motion.div>
@@ -291,25 +291,25 @@ export default function Tools() {
             </section>
 
             {/* PROPRIETARY TOOLS SECTION */}
-            <section className="py-24 px-6 bg-primary-navy text-white">
+            <section className="py-16 md:py-24 px-4 md:px-6 bg-primary-navy text-white">
                 <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-20">
+                    <div className="text-center mb-12 md:mb-20">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-accent-teal mb-3">Technology</h2>
-                            <h3 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
+                            <h2 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-accent-teal mb-3">Technology</h2>
+                            <h3 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 md:mb-6">
                                 Proprietary <span className="text-[#FFE55C] italic">Tools</span>
                             </h3>
-                            <p className="text-gray-300 max-w-2xl mx-auto">
+                            <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
                                 To ensure consistency, transparency, and measurable results, QualiPRO Consult integrates three proprietary tools into its consulting and training services.
                             </p>
                         </motion.div>
                     </div>
 
-                    <div className="space-y-12">
+                    <div className="space-y-8 md:space-y-12">
                         {TOOLS.map((tool, index) => (
                             <ToolCard key={tool.id} tool={tool} index={index} />
                         ))}

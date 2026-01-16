@@ -168,7 +168,7 @@ const ToolCard = ({ tool, index }: { tool: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className="flex flex-col lg:flex-row bg-primary-dark rounded-lg overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors group"
+            className="flex flex-col lg:flex-row  overflow-hidden  hover:border-gray-600 transition-colors group"
         >
             {/* Left: Identity */}
             <div className="lg:w-2/5 p-8 md:p-12 bg-gradient-to-br from-white/5 to-transparent flex flex-col justify-between relative overflow-hidden">

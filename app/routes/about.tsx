@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp, Crosshair, Eye } from "lucide-react";
+import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp, Crosshair, Eye, X } from "lucide-react";
+import type { Route } from "./+types/about";
+
+// Optimized Video URL with Cloudinary transformations
+// w_1280: Resize width to 1280px (720p/1080p ish balance)
+// q_auto: Automatic quality selection
+// f_auto: Automatic format selection (e.g., to webm/mp4 based on browser)
+// vc_auto: Automatic video codec
+const OPTIMIZED_VIDEO_URL = "https://res.cloudinary.com/dsriwu6yn/video/upload/w_1280,q_auto,f_auto,vc_auto/v1768470161/573279_Business_Stock_3840x2160_4_i2zvqd.mp4";
 
 const SERVICES_DATA = [
     {
@@ -186,10 +194,6 @@ const SERVICES_DATA = [
 
 const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, onClick: () => void }) => {
     return (
-        // REPLACING ALL #ff6b4a -> #FFE55C (Yellow) or text-accent-teal where appropriate
-        // REPLACING ALL #3d2f3f -> primary-navy
-        // REPLACING ALL #2a202a -> bg-white/5 or primary-navy
-
         <div className="border border-white/10 rounded-lg overflow-hidden mb-2 bg-white/5">
             <button
                 onClick={onClick}
@@ -233,6 +237,19 @@ const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, 
         </div>
     );
 };
+
+// PRELOAD THE VIDEO AS SOON AS THE ROUTE IS REQUESTED
+export function links() {
+    return [
+        {
+            rel: "preload",
+            href: OPTIMIZED_VIDEO_URL,
+            as: "video",
+            type: "video/mp4",
+        },
+    ];
+}
+
 export function meta() {
     return [
         { title: "About Us - QualiPRO Consult" },
@@ -248,11 +265,11 @@ export default function About() {
     const [openService, setOpenService] = useState<number | null>(null);
 
     useEffect(() => {
-        // Safety fallback: if video doesn't load or play within 8 seconds, hide the overlay
+        // Safety fallback: Reduced from 8000ms to 3500ms for better UX
         const safetyTimer = setTimeout(() => {
             console.log("Safety timer triggered - hiding video overlay");
             setShowVideo(false);
-        }, 8000);
+        }, 3500);
 
         return () => clearTimeout(safetyTimer);
     }, []);
@@ -265,7 +282,7 @@ export default function About() {
             console.error("Video autoplay failed:", error);
             setVideoError(true);
             // If autoplay fails, hide the video after a short delay
-            setTimeout(() => setShowVideo(false), 1000);
+            setTimeout(() => setShowVideo(false), 500);
         });
     };
 
@@ -274,7 +291,7 @@ export default function About() {
         // Hide the video overlay after 2 seconds of playback
         setTimeout(() => {
             setShowVideo(false);
-        }, 1500);
+        }, 2000);
     };
 
     const handleVideoError = (error: any) => {
@@ -282,7 +299,11 @@ export default function About() {
         setVideoError(true);
         setVideoLoading(false);
         // Hide the overlay if video fails to load
-        setTimeout(() => setShowVideo(false), 1000);
+        setTimeout(() => setShowVideo(false), 500);
+    };
+
+    const handleSkip = () => {
+        setShowVideo(false);
     };
 
     return (
@@ -313,6 +334,14 @@ export default function About() {
                             ease: [0.22, 1, 0.36, 1] // Custom bezier for a premium "ease-out" feel
                         }}
                     >
+                        {/* Skip Button - UX Improvement */}
+                        <button
+                            onClick={handleSkip}
+                            className="absolute top-4 right-4 z-50 text-white/50 hover:text-white flex items-center gap-2 text-sm uppercase tracking-wider transition-colors"
+                        >
+                            Skip Intro <X className="w-4 h-4" />
+                        </button>
+
                         {/* Loading Spinner */}
                         {videoLoading && !videoError && (
                             <div className="absolute inset-0 flex items-center justify-center bg-black z-20">
@@ -325,10 +354,6 @@ export default function About() {
 
                         {/* Video Element */}
                         <div className="absolute inset-0 w-full h-full">
-                            {/* 
-                 Using a high-quality placeholder video from Pexels (Business/Tech vibe).
-                 In production, this should be replaced with a local asset.
-               */}
                             <video
                                 ref={(el) => {
                                     if (el) {
@@ -340,9 +365,9 @@ export default function About() {
                                 onError={handleVideoError}
                                 muted
                                 playsInline
-                                preload="auto"
+                                preload="auto" // Eagerly load since we have preloaded
                                 className="w-full h-full object-cover opacity-60"
-                                src="https://res.cloudinary.com/dsriwu6yn/video/upload/v1768470161/573279_Business_Stock_3840x2160_4_i2zvqd.mp4"
+                                src={OPTIMIZED_VIDEO_URL}
                             />
                             {/* Overlay Gradient for better text readability */}
                             <div className="absolute inset-0 bg-gradient-to-r from-primary-navy/80 to-transparent" />
@@ -399,6 +424,7 @@ export default function About() {
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768485715/pexels-august-de-richelieu-4427615_nscdgt.jpg"
                                     alt="QualiPRO Consulting Team"
+                                    loading="eager" // Keep this eager as it's above the fold
                                     className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-primary-navy via-transparent to-transparent opacity-40"></div>
@@ -408,7 +434,6 @@ export default function About() {
                 </section>
 
                 {/* Mission & Vision */}
-                {/* Mission & Vision */}
                 <section className="px-6 md:px-12 max-w-5xl mx-auto pb-24">
                     <div className="flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden">
                         {/* Left Image */}
@@ -417,6 +442,7 @@ export default function About() {
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768484595/industrial-designers-working-3d-model_1_1_ale0hg.jpg"
                                     alt="Team working"
+                                    loading="lazy" // Optimized: Lazy load
                                     className="w-full h-full object-cover opacity-90"
                                 />
                             </div>

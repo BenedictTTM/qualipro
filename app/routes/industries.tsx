@@ -102,7 +102,7 @@ export default function Industries() {
                         transition={{ duration: 0.8 }}
                         className="text-4xl md:text-5xl font-heading font-bold mb-6"
                     >
-                        Industries We <span className="text-accent-teal">Serve</span>
+                        Industries We <span className="text-[#FFE55C]">Serve</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

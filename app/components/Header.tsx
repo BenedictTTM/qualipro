@@ -60,7 +60,7 @@ export function Header() {
                         <img
                             src="/logo.png"
                             alt="QualiPRO Consult"
-                            className="h-8 md:h-12 w-auto object-contain"
+                            className="h-12 md:h-16 w-auto object-contain"
                         />
                     </Link>
 

@@ -427,9 +427,9 @@ export default function Services() {
 
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold leading-[1.1] mb-8 text-white">
-                            We Build <span className="text-[#FFE55C] italic pr-2">Quality</span> <br />
-                            Into Your <span className="relative inline-block text-accent-teal">
-                                DNA.
+                            We build quality into your <span className="text-[#FFE55C] italic pr-2">systems,</span> <br />
+                            processes, and <span className="relative inline-block text-accent-teal">
+                                decisions.
                                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-accent-teal opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                                 </svg>
@@ -504,7 +504,7 @@ export default function Services() {
                     </svg>
                 </div>
 
-               
+
             </section>
         </div>
     );

@@ -106,15 +106,15 @@ export default function Home() {
             className="mb-10 relative inline-block max-w-4xl mx-auto"
           >
             <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-primary-navy leading-tight tracking-tight">
-              Smooth <HighlightText>Business</HighlightText> Starts&nbsp;With <br className="hidden lg:block mb-4" />
-              <HighlightText>Good Service Consultation</HighlightText>
+              Quality systems that <HighlightText>strengthen</HighlightText> <br className="hidden lg:block mb-4" />
+              <HighlightText>compliance, performance, and profitability.</HighlightText>
               <span className="text-accent-teal inline-block ml-4 align-top animate-pulse">
                 <Sparkles className="w-5 h-6 md:w-6 md:h-6 text-[#2B809A]" />
               </span>
             </h1>
 
             <p className="text-base md:text-lg text-gray-500 max-w-xl md:max-w-2xl mx-auto mt-6 md:mt-8 font-light leading-relaxed px-4">
-              With QualiPRO we are prepared to guarantee your business advancement and increment business deals today.
+              With QualiPRO Consult, organizations are equipped to strengthen compliance, improve operational performance, and support sustainable business growth.
             </p>
           </motion.div>
 
@@ -144,47 +144,7 @@ export default function Home() {
               {/* Inner container to keep floating elements content-aligned */}
               <div className="absolute inset-0 max-w-7xl mx-auto px-4 md:px-12 pointer-events-none">
 
-                {/* LEFT FLOATING CARD: STATISTICS */}
-                <FloatingCard className="top-[15%] left-4 lg:left-0 w-52 !p-4 hidden md:block pointer-events-auto" delay={0.8}>
-                  <h4 className="font-serif font-bold text-base text-primary-navy mb-4">Project Statistic 2025</h4>
-
-                  <div className="space-y-3">
-                    <div>
-                      <div className="flex justify-between text-xs font-bold text-gray-700 mb-1">
-                        <span>Happy Client</span>
-                        <span>90%</span>
-                      </div>
-                      <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: "90%" }}
-                          transition={{ duration: 1.5, delay: 1 }}
-                          className="h-full bg-[#FFE55C]"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex justify-between text-xs font-bold text-gray-700 mb-1">
-                        <span>Project Success</span>
-                        <span>95%</span>
-                      </div>
-                      <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: "95%" }}
-                          transition={{ duration: 1.5, delay: 1.2 }}
-                          className="h-full bg-[#FFE55C]"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Thumbs Up Badge */}
-                  <div className="absolute -right-5 top-1/2 -translate-y-1/2 bg-primary-navy text-white w-10 h-10 rounded-lg flex items-center justify-center shadow-lg">
-                    <ThumbsUp className="w-5 h-5" />
-                  </div>
-                </FloatingCard>
+                {/* LEFT FLOATING CARD: STATISTICS REMOVED */}
 
                 {/* RIGHT FLOATING CARD: POPULAR SERVICES */}
                 <FloatingCard className="bottom-[10%] right-4 lg:right-0 w-60 !p-4 !bg-primary-navy !text-white hidden md:block pointer-events-auto" delay={1}>
@@ -194,7 +154,7 @@ export default function Home() {
                     </div>
                     <div>
                       <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-medium">Discover</span>
-                      <h4 className="font-serif font-bold text-base leading-tight text-white">Our Popular Service</h4>
+                      <h4 className="font-serif font-bold text-base leading-tight text-white">Our Core Services</h4>
                     </div>
                   </div>
 
@@ -203,13 +163,13 @@ export default function Home() {
                       <div className="w-7 h-7 rounded-full bg-[#2B809A]/20 flex items-center justify-center text-[#2B809A] group-hover:bg-[#2B809A] group-hover:text-white transition-colors">
                         <BarChart className="w-3.5 h-3.5" />
                       </div>
-                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">Business Analysis</span>
+                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">Quality Management Systems</span>
                     </li>
                     <li className="flex items-center gap-2 p-1.5 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group">
                       <div className="w-7 h-7 rounded-full bg-[#FFE55C]/20 flex items-center justify-center text-[#FFE55C] group-hover:bg-[#FFE55C] group-hover:text-primary-navy transition-colors">
                         <Lightbulb className="w-3.5 h-3.5" />
                       </div>
-                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">Experience Design</span>
+                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">GMP & Regulatory Support</span>
                     </li>
                   </ul>
 
@@ -234,35 +194,7 @@ export default function Home() {
       <section className="hidden md:hidden px-6 pb-20 space-y-6">
 
         {/* Mobile Stat Card */}
-        <FloatingCard isFloating={false} delay={0.2} className="w-full">
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="font-serif font-bold text-base text-primary-navy">Project Statistics</h4>
-            <div className="bg-primary-navy text-white p-1.5 rounded-md">
-              <ThumbsUp className="w-3 h-3" />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between text-xs font-bold text-gray-700 mb-1">
-                <span>Happy Client</span>
-                <span>90%</span>
-              </div>
-              <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full w-[90%] bg-[#FFE55C]" />
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between text-xs font-bold text-gray-700 mb-1">
-                <span>Project Success</span>
-                <span>95%</span>
-              </div>
-              <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full w-[95%] bg-[#FFE55C]" />
-              </div>
-            </div>
-          </div>
-        </FloatingCard>
+        {/* Mobile Stat Card REMOVED */}
 
         {/* Mobile Services Card */}
         <FloatingCard isFloating={false} delay={0.4} className="w-full !bg-primary-navy !text-white">
@@ -272,7 +204,7 @@ export default function Home() {
             </div>
             <div>
               <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Discover</span>
-              <h4 className="font-serif font-bold text-base leading-tight text-white">Our Popular Service</h4>
+              <h4 className="font-serif font-bold text-base leading-tight text-white">Our Core Services</h4>
             </div>
           </div>
 
@@ -281,13 +213,13 @@ export default function Home() {
               <div className="w-8 h-8 rounded-full bg-[#2B809A]/20 flex items-center justify-center text-[#2B809A]">
                 <BarChart className="w-4 h-4" />
               </div>
-              <span className="font-medium text-sm text-gray-200">Business Analysis</span>
+              <span className="font-medium text-sm text-gray-200">Quality Management Systems</span>
             </li>
             <li className="flex items-center gap-3 p-2 rounded-lg bg-white/5 border border-white/5">
               <div className="w-8 h-8 rounded-full bg-[#FFE55C]/20 flex items-center justify-center text-[#FFE55C]">
                 <Lightbulb className="w-4 h-4" />
               </div>
-              <span className="font-medium text-sm text-gray-200">Experience Design</span>
+              <span className="font-medium text-sm text-gray-200">GMP & Regulatory Support</span>
             </li>
           </ul>
 
@@ -308,7 +240,7 @@ export default function Home() {
           className="max-w-5xl text-center"
         >
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium leading-tight text-primary-navy">
-            QualiPRO Consult is a <span className="text-gray-300">Strategic Quality Partner</span> which spreads across <span className="text-accent-teal font-bold">10+ Industries</span> and <span className="text-[#FFE55C] font-bold" style={{ textShadow: "0px 0px 1px rgba(0,0,0,0.1)" }}>500+ Experts</span> who speak the one language that matters — <span className="italic font-bold">Excellence.</span>
+            QualiPRO Consult delivers strategic, practical quality consulting for organizations committed to <span className="italic font-bold">excellence</span> and <span className="text-accent-teal font-bold">sustainable performance.</span>
           </h2>
         </motion.div>
       </section>
@@ -328,8 +260,7 @@ export default function Home() {
               Why choose <span className="text-accent-teal">QualiPRO?</span>
             </h2>
             <p className="text-gray-600 text-base leading-relaxed">
-              We believe quality partnership should amplify business potential, not complicate it.
-              That's why we provide consultation that feels intuitive, works flawlessly, and grows with you.
+              We deliver practical, risk-based quality solutions that go beyond certification, helping organizations strengthen compliance and improve operational efficiency.
             </p>
           </motion.div>
 
@@ -350,8 +281,7 @@ export default function Home() {
               </div>
               <div className="h-px w-full bg-gray-200" />
               <p className="text-gray-600 text-sm leading-relaxed">
-                We obsess over client satisfaction. Every strategy, every interaction is designed
-                to feel effortless and empower your team to do their best work.
+                We work closely with our clients to understand their operational realities and regulatory obligations. Every engagement is designed to be practical, collaborative, and empowering, building internal capability while delivering measurable results.
               </p>
             </motion.div>
 
@@ -365,12 +295,11 @@ export default function Home() {
             >
               <div className="flex items-center gap-3 mb-2">
                 <TrendingUp className="w-5 h-5 text-[#FFE55C]" />
-                <h3 className="text-lg font-bold">Engineered for Growth</h3>
+                <h3 className="text-lg font-bold">Built for Sustainable Growth</h3>
               </div>
               <div className="h-px w-full bg-gray-200" />
               <p className="text-gray-600 text-sm leading-relaxed">
-                From local business to enterprise, our solutions grow with you. Built on secure,
-                reliable methodologies that handle whatever comes next.
+                Scalable quality systems that support compliance, efficiency, and long-term performance.
               </p>
             </motion.div>
 
@@ -384,12 +313,11 @@ export default function Home() {
             >
               <div className="flex items-center gap-3 mb-2">
                 <Target className="w-5 h-5 text-accent-teal" />
-                <h3 className="text-lg font-bold">Your Success, Our Mission</h3>
+                <h3 className="text-lg font-bold">Your Success, Our Focus</h3>
               </div>
               <div className="h-px w-full bg-gray-200" />
               <p className="text-gray-600 text-sm leading-relaxed">
-                We're not just consultants—we're partners in your growth. We succeed when you
-                succeed, and we're committed to making that happen.
+                We measure our success by the strength, effectiveness, and sustainability of the systems we help you build.
               </p>
             </motion.div>
 

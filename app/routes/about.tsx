@@ -193,6 +193,36 @@ const SERVICES_DATA = [
     }
 ];
 
+const ExpandableText = ({ text, maxLength = 150, className = "", align = "left" }: { text: string, maxLength?: number, className?: string, align?: "left" | "right" }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    if (text.length <= maxLength) {
+        return <p className={className}>{text}</p>;
+    }
+
+    return (
+        <div className={`flex flex-col ${align === "right" ? "items-end" : "items-start"}`}>
+            <p className={className}>
+                {isExpanded ? text : `${text.substring(0, maxLength)}...`}
+            </p>
+            <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className={`mt-2 flex items-center gap-1 text-xs font-bold text-accent-teal hover:text-white transition-colors uppercase tracking-wider ${align === "right" ? "flex-row-reverse" : ""}`}
+            >
+                {isExpanded ? (
+                    <>
+                        Show Less <ChevronUp className="w-4 h-4" />
+                    </>
+                ) : (
+                    <>
+                        Read More <ChevronDown className="w-4 h-4" />
+                    </>
+                )}
+            </button>
+        </div>
+    );
+};
+
 const AccordionItem = ({ item, isOpen, onClick }: { item: any, isOpen: boolean, onClick: () => void }) => {
     return (
         <div className="border border-white/10 rounded-lg overflow-hidden mb-2 bg-white/5">
@@ -471,9 +501,11 @@ export default function About() {
                                         </h2>
                                     </div>
                                 </div>
-                                <p className="text-gray-300 text-right text-sm md:text-sm leading-relaxed pl-10">
-                                    To provide compassionate, high-quality home health care that enhances well-being, independence, and quality of life, with personalized care, professionalism, respect, and excellence.
-                                </p>
+                                <ExpandableText
+                                    text="To build a culture of quality and compliance that strengthens organizations through expert, hands-on consulting and training, enabling them to design, implement, and sustain effective management systems that support certification, regulatory compliance, and long-term business performance."
+                                    className="text-gray-300 text-right text-sm md:text-sm leading-relaxed pl-10"
+                                    align="right"
+                                />
                             </div>
 
                             {/* Divider */}
@@ -489,9 +521,11 @@ export default function About() {
                                     </div>
                                     <Eye className="w-16 h-16 text-[#FFE55C]" strokeWidth={1.5} />
                                 </div>
-                                <p className="text-gray-300 text-left text-sm md:text-sm leading-relaxed pr-10">
-                                    To be a leader in home health care, providing compassionate care, innovative solutions, and client-focused support for dignified, comfortable, and independent living.
-                                </p>
+                                <ExpandableText
+                                    text="To be Africa’s most trusted consulting partner in quality, safety, and compliance systems—recognized for integrity, technical excellence, and measurable results that help organizations achieve sustainable growth and global standards."
+                                    className="text-gray-300 text-left text-sm md:text-sm leading-relaxed pr-10"
+                                    align="left"
+                                />
                             </div>
 
                         </div>
@@ -682,7 +716,7 @@ export default function About() {
                     </div>
                 </section>
 
-            </div>
-        </div>
+            </div >
+        </div >
     );
 }

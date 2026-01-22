@@ -87,36 +87,43 @@ const INDUSTRIES = [
 
 export default function Industries() {
     return (
-        <div className="w-full">
+        <div className="w-full bg-slate-50">
             {/* Hero Section */}
-            <section className="relative py-20 bg-primary-navy text-white overflow-hidden">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
-                    <svg className="absolute top-0 left-0 w-full h-full text-accent-teal" viewBox="0 0 100 100" fill="currentColor">
-                        <rect x="0" y="0" width="50" height="50" transform="rotate(45 25 25)" />
+            <section className="relative py-12 md:py-24 bg-white overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
+                    <svg className="absolute top-0 right-0 w-full h-full text-primary-navy" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M0 100 C 20 0 50 0 100 100 Z" fill="currentColor" />
                     </svg>
                 </div>
                 <div className="container mx-auto px-6 relative z-10 text-center">
-                    <motion.h1
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-4xl md:text-5xl font-heading font-bold mb-6"
                     >
-                        Industries We <span className="text-[#FFE55C]">Serve</span>
-                    </motion.h1>
-                    <motion.p
+                        <h2 className="text-gold font-sans font-semibold tracking-widest text-sm uppercase mb-3">
+                            Our Expertise
+                        </h2>
+                        <h1 className="text-5xl md:text-6xl font-serif text-primary-navy mb-6 leading-tight">
+                            Industries We <span className="text-accent-teal italic">Serve</span>
+                        </h1>
+                    </motion.div>
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+                        className="max-w-2xl mx-auto"
                     >
-                        Across all sectors, we help organizations shift from reactive to proactive quality management—reducing the cost of poor quality, preventing failures, and protecting revenue.
-                    </motion.p>
+                        <div className="w-24 h-1 bg-gold mx-auto mb-8 rounded-full"></div>
+                        <p className="text-lg md:text-xl text-neutral-muted leading-relaxed font-light">
+                            Across all sectors, we help organizations shift from reactive to proactive quality management—reducing the cost of poor quality, preventing failures, and protecting revenue.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Industries Grid */}
-            <section className="py-20 bg-white">
+            <section className="py-12 md:py-24 bg-slate-50">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {INDUSTRIES.map((industry, index) => (
@@ -124,25 +131,33 @@ export default function Industries() {
                                 key={industry.title}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -5 }}
-                                className="p-8 bg-white border border-neutral-border rounded-xl shadow-sm hover:shadow-lg transition-all flex flex-col h-full"
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                className="group relative bg-white p-8 rounded-lg  hover:shadow-xs transition-all duration-300 border border-neutral-border flex flex-col h-full overflow-hidden"
                             >
-                                <div className="w-14 h-14 bg-accent-teal-light rounded-2xl flex items-center justify-center mb-6 shrink-0">
-                                    <industry.icon className="w-8 h-8 text-accent-teal" />
+
+
+                                <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-lg group-hover:bg-slate-50 text-accent-teal   transition-colors duration-300">
+                                    <industry.icon className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-xl font-bold text-primary-navy mb-3">{industry.title}</h3>
-                                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
+
+                                <h3 className="text-2xl font-serif text-primary-navy mb-4 group-hover:text-accent-teal-dark transition-colors">
+                                    {industry.title}
+                                </h3>
+
+                                <p className="text-neutral-muted mb-8 leading-relaxed flex-grow">
                                     {industry.description}
                                 </p>
 
-                                <div className="bg-neutral-surface p-4 rounded-lg">
-                                    <h4 className="font-bold text-primary-navy text-sm mb-2">Business Value:</h4>
-                                    <ul className="space-y-1">
+                                <div className="pt-6 border-t border-slate-100">
+                                    <h4 className="font-sans font-semibold text-primary-navy text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-accent-teal"></span>
+                                        Business Value
+                                    </h4>
+                                    <ul className="space-y-3">
                                         {industry.value.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                                                <span className="text-accent-teal mt-1">✓</span>
+                                            <li key={i} className="flex items-start gap-3 text-sm text-neutral-600 group-hover:text-neutral-800 transition-colors">
+                                                <CheckBadgeIcon className="w-5 h-5 text-gold shrink-0 mt-px opacity-100" />
                                                 <span>{item}</span>
                                             </li>
                                         ))}

@@ -136,6 +136,9 @@ export default function Home() {
                   src="/people.png"
                   alt="QualiPRO Team"
                   className="w-full h-auto object-cover min-h-[500px] object-top"
+                  loading="eager"
+                  /* @ts-expect-error - Optimizing LCP */
+                  fetchPriority="high"
                 />
                 {/* Subtle lighting overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
@@ -169,7 +172,7 @@ export default function Home() {
                       <div className="w-7 h-7 rounded-full bg-[#FFE55C]/20 flex items-center justify-center text-[#FFE55C] group-hover:bg-[#FFE55C] group-hover:text-primary-navy transition-colors">
                         <Lightbulb className="w-3.5 h-3.5" />
                       </div>
-                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">GMP & Regulatory Support</span>
+                      <span className="font-medium text-xs text-gray-200 group-hover:text-white">GMP & Regulatory Compliance Support</span>
                     </li>
                   </ul>
 

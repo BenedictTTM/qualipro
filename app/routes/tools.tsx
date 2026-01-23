@@ -20,6 +20,19 @@ export function meta({ }: Route.MetaArgs) {
         { title: "Tools & Methodology | ACERT & Q-DOC | QualiPRO Consult" },
         { name: "description", content: "Discover ACERT, Q-DOC Master, and Q-Risk Tracker—our proprietary tools for assessing compliance and managing quality systems." },
         { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/tools" },
+
+        // Open Graph / Social
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://www.qualiproconsult.com/tools" },
+        { property: "og:title", content: "Tools & Methodology | QualiPRO Consult" },
+        { property: "og:description", content: "Discover ACERT, Q-DOC Master, and Q-Risk Tracker—our proprietary tools for assessing compliance and managing quality systems." },
+        { property: "og:image", content: "/favicon.ico" },
+
+        // Twitter
+        { name: "twitter:card", content: "summary" },
+        { name: "twitter:title", content: "Tools & Methodology | QualiPRO Consult" },
+        { name: "twitter:description", content: "Discover ACERT, Q-DOC Master, and Q-Risk Tracker—our proprietary tools for assessing compliance and managing quality systems." },
+        { name: "twitter:image", content: "/favicon.ico" },
     ];
 }
 
@@ -230,8 +243,33 @@ const ToolCard = ({ tool, index }: { tool: any, index: number }) => {
 /* --- MAIN PAGE --- */
 
 export default function Tools() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": TOOLS.map((tool, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "SoftwareApplication",
+                "name": tool.name,
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "description": tool.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        }))
+    };
+
     return (
         <div className="w-full bg-white font-sans text-primary-navy">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
 
             {/* HERO SECTION */}
             <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-6 bg-primary-navy text-white overflow-hidden">
@@ -240,7 +278,7 @@ export default function Tools() {
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.pexels.com/photos/4427497/pexels-photo-4427497.jpeg"
-                        alt="Background"
+                        alt="Quality consultant analyzing documents and working on compliance strategies"
                         className="w-full h-full object-cover opacity-60"
                     />
                     {/* Gradient Overlay for Text Readability */}
@@ -272,10 +310,10 @@ export default function Tools() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">Our Process</h2>
-                            <h3 className="text-2xl md:text-4xl font-serif font-bold text-primary-navy mb-4 md:mb-6">
+                            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">Our Process</p>
+                            <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary-navy mb-4 md:mb-6">
                                 Implementation <HighlightText>Methodology</HighlightText>
-                            </h3>
+                            </h2>
                             <p className="text-gray-600 max-w-2xl mx-auto text-sm md:text-md">
                                 Our methodology is structured, practical, and results-oriented—ensuring that quality management systems are not only compliant, but effective, sustainable, and aligned with business objectives.
                             </p>
@@ -300,10 +338,10 @@ export default function Tools() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            <h2 className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-accent-teal mb-3">Technology</h2>
-                            <h3 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 md:mb-6">
+                            <p className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-accent-teal mb-3">Technology</p>
+                            <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 md:mb-6">
                                 Proprietary <span className="text-[#FFE55C] italic">Tools</span>
-                            </h3>
+                            </h2>
                             <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
                                 To ensure consistency, transparency, and measurable results, QualiPRO Consult integrates three proprietary tools into its consulting and training services.
                             </p>

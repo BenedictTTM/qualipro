@@ -277,10 +277,30 @@ export function links() {
 }
 
 export function meta() {
+    const title = "About QualiPRO Consult | Quality Management Experts";
+    const description = "Meet our team of expert quality consultants. We deliver hands-on support for ISO systems, GMP compliance, and operational excellence across Africa.";
+    const url = "https://www.qualiproconsult.com/about";
+    const image = "https://www.qualiproconsult.com/logo.png";
+
     return [
-        { title: "About QualiPRO Consult | Quality Management Experts" },
-        { name: "description", content: "Meet our team of expert quality consultants. We deliver hands-on support for ISO systems, GMP compliance, and operational excellence across Africa." },
-        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/about" },
+        { title },
+        { name: "description", content: description },
+        { tagName: "link", rel: "canonical", href: url },
+
+        // Open Graph / Facebook
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+
+        // Twitter Card
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
     ];
 }
 
@@ -427,7 +447,7 @@ export default function About() {
                 <div className=" absolute top-0 left-0 w-full h-[60vh] lg:hidden z-0 pointer-events-none">
                     <img
                         src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768485715/pexels-august-de-richelieu-4427615_nscdgt.jpg"
-                        alt="QualiPRO Consulting Team"
+                        alt="QualiPRO consulting team working on quality management system implementation and ISO certification"
                         className="w-full h-full object-cover opacity-80"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-primary-navy/40 via-primary-navy/80 to-primary-navy"></div>
@@ -475,7 +495,7 @@ export default function About() {
                             <div className="aspect-[4/4] bg-gray-300 rounded-lg overflow-hidden relative shadow-xl">
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768485715/pexels-august-de-richelieu-4427615_nscdgt.jpg"
-                                    alt="QualiPRO Consulting Team"
+                                    alt="Expert quality consultants collaborating on ISO and GMP compliance strategies"
                                     loading="eager" // Keep this eager as it's above the fold
                                     className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
                                 />
@@ -493,7 +513,7 @@ export default function About() {
                             <div className="rounded-2xl overflow-hidden h-[500px] shadow-lg border border-white/10">
                                 <img
                                     src="https://res.cloudinary.com/dsriwu6yn/image/upload/v1768484595/industrial-designers-working-3d-model_1_1_ale0hg.jpg"
-                                    alt="Team working"
+                                    alt="Industrial quality management team developing process improvement strategies and documentation"
                                     loading="lazy" // Optimized: Lazy load
                                     className="w-full h-full object-cover opacity-90"
                                 />

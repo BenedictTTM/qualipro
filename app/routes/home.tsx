@@ -14,10 +14,34 @@ import {
 } from "lucide-react";
 
 export function meta({ }: Route.MetaArgs) {
+  const title = "ISO & GMP Consulting Services in Ghana | QualiPRO Consult";
+  const description = "Get ISO 9001, GMP & ISO 17025 certification faster. Expert quality management consulting in Ghana & Africa. Free consultation available.";
+  const url = "https://www.qualiproconsult.com/";
+  const image = "https://www.qualiproconsult.com/logo.png";
+
   return [
-    { title: "ISO & GMP Consulting Services in Ghana | QualiPRO Consult" },
-    { name: "description", content: "Leading quality management consultants in Africa. We specialize in ISO 9001, GMP, ISO 17025, and QMS implementation for sustainable business performance." },
-    { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/" },
+    { title },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: url },
+
+    // Open Graph / Facebook
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:site_name", content: "QualiPRO Consult" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // Additional SEO
+    { name: "keywords", content: "ISO 9001 Ghana, GMP consulting Africa, ISO 17025 accreditation, quality management systems, certification consulting" },
   ];
 }
 
@@ -81,17 +105,56 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "ConsultingService",
+            "@type": "ProfessionalService",
             "name": "QualiPRO Consult",
             "url": "https://www.qualiproconsult.com",
             "logo": "https://www.qualiproconsult.com/logo.png",
-            "description": "Quality management and ISO consulting firm serving Ghana and Africa.",
+            "image": "https://www.qualiproconsult.com/logo.png",
+            "description": "Quality management and ISO consulting firm serving Ghana and Africa. Expert consulting for ISO 9001, GMP, ISO 17025, and quality systems implementation.",
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "GH",
-              "addressRegion": "Greater Accra"
+              "addressRegion": "Greater Accra",
+              "addressLocality": "Accra"
             },
-            "priceRange": "$$"
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "5.6037",
+              "longitude": "-0.1870"
+            },
+            "telephone": "+233-24-885-7308",
+            "email": "info@qualiproconsult.com",
+            "priceRange": "$$",
+            "openingHours": "Mo-Fr 08:00-17:00",
+            "areaServed": [
+              {
+                "@type": "Country",
+                "name": "Ghana"
+              },
+              {
+                "@type": "Continent",
+                "name": "Africa"
+              }
+            ],
+            "serviceType": ["ISO Consulting", "GMP Consulting", "Quality Management", "Certification Support"],
+            "knowsAbout": ["ISO 9001", "ISO 17025", "ISO 22000", "ISO 13485", "ISO 14001", "ISO 45001", "GMP", "Quality Management Systems"]
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.qualiproconsult.com/"
+              }
+            ]
           }),
         }}
       />
@@ -154,7 +217,7 @@ export default function Home() {
               <div className="overflow-hidden relative">
                 <img
                   src="/people.png"
-                  alt="QualiPRO Team"
+                  alt="QualiPRO Consult team collaborating on quality management and ISO certification systems"
                   className="w-full h-auto object-cover min-h-[500px] object-top"
                   loading="eager"
                   /* @ts-expect-error - Optimizing LCP */

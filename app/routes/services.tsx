@@ -22,10 +22,30 @@ import {
 } from "lucide-react";
 
 export function meta({ }: Route.MetaArgs) {
+    const title = "ISO, GMP & Quality Consulting Services | QualiPRO Consult";
+    const description = "Expert consulting for ISO 9001, ISO 17025, GMP compliance, and internal audits. Practical implementation support for regulated industries in Ghana & Africa.";
+    const url = "https://www.qualiproconsult.com/services";
+    const image = "https://www.qualiproconsult.com/logo.png";
+
     return [
-        { title: "ISO, GMP & Quality Consulting Services | QualiPRO Consult" },
-        { name: "description", content: "Expert consulting for ISO 9001, ISO 17025, GMP compliance, and internal audits. Practical implementation support for regulated industries in Ghana & Africa." },
-        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/services" },
+        { title },
+        { name: "description", content: description },
+        { tagName: "link", rel: "canonical", href: url },
+
+        // Open Graph / Facebook
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+
+        // Twitter Card
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
     ];
 }
 
@@ -439,7 +459,7 @@ export default function Services() {
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.pexels.com/photos/7689745/pexels-photo-7689745.jpeg"
-                        alt="Background"
+                        alt="Quality management consultants collaborating on ISO certification and compliance documentation"
                         className="w-full h-full object-cover opacity-60"
                     />
                     {/* Gradient Overlay for Text Readability */}

@@ -14,10 +14,30 @@ import {
 import { useState } from "react";
 
 export function meta({ }: Route.MetaArgs) {
+    const title = "Contact QualiPRO Consult | Quality Management Consulting";
+    const description = "Contact us for ISO consulting, GMP support, and quality training inquiries. Serving Ghana and Africa. Get your free consultation today.";
+    const url = "https://www.qualiproconsult.com/contact";
+    const image = "https://www.qualiproconsult.com/logo.png";
+
     return [
-        { title: "Contact QualiPRO Consult | Quality Management Consulting" },
-        { name: "description", content: "Contact us for ISO consulting, GMP support, and quality training inquiries. Serving Ghana and Africa." },
-        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/contact" },
+        { title },
+        { name: "description", content: description },
+        { tagName: "link", rel: "canonical", href: url },
+
+        // Open Graph / Facebook
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+
+        // Twitter Card
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
     ];
 }
 
@@ -158,7 +178,7 @@ export default function Contact() {
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.pexels.com/photos/7689745/pexels-photo-7689745.jpeg"
-                        alt="Contact Hero"
+                        alt="Professional consultation meeting - contact QualiPRO Consult for quality management services"
                         className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-primary-navy/90 mix-blend-multiply" />

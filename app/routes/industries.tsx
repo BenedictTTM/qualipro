@@ -10,10 +10,30 @@ import {
 } from "@heroicons/react/24/outline";
 
 export function meta({ }: Route.MetaArgs) {
+    const title = "Industries We Serve | QualiPRO Consult";
+    const description = "Specialized quality consulting for Pharma, Food, Labs, Medical Devices, and Manufacturing industries in Africa. Sector-specific expertise.";
+    const url = "https://www.qualiproconsult.com/industries";
+    const image = "https://www.qualiproconsult.com/logo.png";
+
     return [
-        { title: "Industries We Serve | QualiPRO Consult" },
-        { name: "description", content: "Specialized quality consulting for Pharma, Food, Labs, Medical Devices, and Manufacturing industries in Africa." },
-        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/industries" },
+        { title },
+        { name: "description", content: description },
+        { tagName: "link", rel: "canonical", href: url },
+
+        // Open Graph / Facebook
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+
+        // Twitter Card
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
     ];
 }
 

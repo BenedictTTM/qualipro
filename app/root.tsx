@@ -21,6 +21,9 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap",
   },
+  // Preconnect to external image CDNs for faster loading
+  { rel: "preconnect", href: "https://res.cloudinary.com" },
+  { rel: "dns-prefetch", href: "https://images.pexels.com" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

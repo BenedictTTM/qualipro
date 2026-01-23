@@ -17,8 +17,9 @@ import {
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Tools & Methodology - QualiPRO Consult" },
-        { name: "description", content: "QualiPRO Consult's proprietary tools and methodology for effective quality management." },
+        { title: "Tools & Methodology | ACERT & Q-DOC | QualiPRO Consult" },
+        { name: "description", content: "Discover ACERT, Q-DOC Master, and Q-Risk Tracker—our proprietary tools for assessing compliance and managing quality systems." },
+        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/tools" },
     ];
 }
 

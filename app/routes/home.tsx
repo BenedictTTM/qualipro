@@ -15,8 +15,9 @@ import {
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "QualiPRO Consult - Strategic Quality Partners" },
-    { name: "description", content: "Smooth Business Starts With Good Service Consultation." },
+    { title: "ISO & GMP Consulting Services in Ghana | QualiPRO Consult" },
+    { name: "description", content: "Leading quality management consultants in Africa. We specialize in ISO 9001, GMP, ISO 17025, and QMS implementation for sustainable business performance." },
+    { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/" },
   ];
 }
 
@@ -75,6 +76,25 @@ export default function Home() {
     <div className="w-full bg-white overflow-x-hidden font-sans text-primary-navy">
 
       {/* HERO SECTION */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ConsultingService",
+            "name": "QualiPRO Consult",
+            "url": "https://www.qualiproconsult.com",
+            "logo": "https://www.qualiproconsult.com/logo.png",
+            "description": "Quality management and ISO consulting firm serving Ghana and Africa.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "GH",
+              "addressRegion": "Greater Accra"
+            },
+            "priceRange": "$$"
+          }),
+        }}
+      />
       <section className="relative pt-24 pb-12 lg:pt-18 lg:pb-32 px-4 md:px-6 bg-[url('/people.png')] bg-cover bg-center bg-no-repeat md:bg-none">
         {/* Mobile Overlay */}
         <div className="absolute inset-0 bg-white/90 z-0 md:hidden" />

@@ -4,11 +4,6 @@ import { ArrowRight, CheckCircle, Users, Trophy, ChevronDown, ChevronUp, Crossha
 import type { Route } from "./+types/about";
 import { Link } from "react-router";
 
-// Optimized Video URL with Cloudinary transformations
-// w_1280: Resize width to 1280px (720p/1080p ish balance)
-// q_auto: Automatic quality selection
-// f_auto: Automatic format selection (e.g., to webm/mp4 based on browser)
-// vc_auto: Automatic video codec
 const OPTIMIZED_VIDEO_URL = "https://res.cloudinary.com/dsriwu6yn/video/upload/w_1280,q_auto,f_auto,vc_auto/v1768470161/573279_Business_Stock_3840x2160_4_i2zvqd.mp4";
 
 const SERVICES_DATA = [
@@ -283,8 +278,9 @@ export function links() {
 
 export function meta() {
     return [
-        { title: "About Us - QualiPRO Consult" },
-        { name: "description", content: "Learn more about our team, our mission, and our commitment to excellence." },
+        { title: "About QualiPRO Consult | Quality Management Experts" },
+        { name: "description", content: "Meet our team of expert quality consultants. We deliver hands-on support for ISO systems, GMP compliance, and operational excellence across Africa." },
+        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/about" },
     ];
 }
 
@@ -438,6 +434,22 @@ export default function About() {
                 </div>
 
                 {/* Header */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "AboutPage",
+                            "mainEntity": {
+                                "@type": "Organization",
+                                "name": "QualiPRO Consult",
+                                "foundingDate": "2020",
+                                "url": "https://www.qualiproconsult.com",
+                                "slogan": "Quality Beyond Certification"
+                            }
+                        }),
+                    }}
+                />
                 <section className="relative z-10 pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
                     <h1 className="text-5xl md:text-6xl font-light text-white mb-8">About QualiPRO</h1>
                 </section>

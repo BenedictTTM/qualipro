@@ -23,8 +23,9 @@ import {
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Our Services - QualiPRO Consult" },
-        { name: "description", content: "QualiPRO Consult provides quality management, compliance, and capacity-building services." },
+        { title: "ISO, GMP & Quality Consulting Services | QualiPRO Consult" },
+        { name: "description", content: "Expert consulting for ISO 9001, ISO 17025, GMP compliance, and internal audits. Practical implementation support for regulated industries in Ghana & Africa." },
+        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/services" },
     ];
 }
 
@@ -405,6 +406,34 @@ export default function Services() {
             />
 
             {/* HERO SECTION */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Service",
+                        "serviceType": "ISO & Quality Consulting",
+                        "provider": {
+                            "@type": "ConsultingService",
+                            "name": "QualiPRO Consult"
+                        },
+                        "areaServed": {
+                            "@type": "Continent",
+                            "name": "Africa"
+                        },
+                        "hasOfferCatalog": {
+                            "@type": "OfferCatalog",
+                            "name": "Consulting Services",
+                            "itemListElement": [
+                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ISO 9001 Consulting" } },
+                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "GMP Consulting" } },
+                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ISO 17025 Accreditation" } },
+                                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Quality Audits" } }
+                            ]
+                        }
+                    }),
+                }}
+            />
             <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-primary-navy text-white min-h-[70vh] flex items-center">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">

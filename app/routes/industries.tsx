@@ -11,8 +11,9 @@ import {
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Industries We Serve - QualiPRO Consult" },
-        { name: "description", content: "QualiPRO Consult supports organizations in regulated and quality-critical industries." },
+        { title: "Industries We Serve | QualiPRO Consult" },
+        { name: "description", content: "Specialized quality consulting for Pharma, Food, Labs, Medical Devices, and Manufacturing industries in Africa." },
+        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/industries" },
     ];
 }
 

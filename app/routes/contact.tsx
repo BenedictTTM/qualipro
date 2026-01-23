@@ -15,8 +15,9 @@ import { useState } from "react";
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Contact Us - QualiPRO Consult" },
-        { name: "description", content: "Start a conversation with QualiPRO Consult. Premium service consultation for elite businesses." },
+        { title: "Contact QualiPRO Consult | Quality Management Consulting" },
+        { name: "description", content: "Contact us for ISO consulting, GMP support, and quality training inquiries. Serving Ghana and Africa." },
+        { tagName: "link", rel: "canonical", href: "https://www.qualiproconsult.com/contact" },
     ];
 }
 
@@ -135,6 +136,22 @@ export default function Contact() {
         <div className="w-full bg-white font-sans min-h-screen selection:bg-accent-teal/20 selection:text-primary-navy">
 
             {/* HERO SECTION - Premium Dark */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ContactPage",
+                        "mainEntity": {
+                            "@type": "Organization",
+                            "name": "QualiPRO Consult",
+                            "telephone": "+233-24-885-7308",
+                            "email": "info@qualiproconsult.com",
+                            "url": "https://www.qualiproconsult.com"
+                        }
+                    }),
+                }}
+            />
             <section className="relative pt-32 pb-32 md:pt-48 md:pb-40 px-6 bg-primary-navy text-white overflow-hidden">
                 {/* Abstract Background Elements */}
                 {/* Hero Background Image */}

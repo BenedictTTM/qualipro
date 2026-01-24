@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export function meta({ }: Route.MetaArgs) {
     const title = "Contact QualiPRO Consult | Quality Management Consulting";
-    const description = "Contact us for ISO consulting, GMP support, and quality training inquiries. Serving Ghana and Africa. Get your free consultation today.";
+    const description = "Contact us for ISO consulting, GMP support, and quality training inquiries. Serving Ghana and Africa. ";
     const url = "https://www.qualiproconsult.com/contact";
     const image = "https://www.qualiproconsult.com/logo.png";
 

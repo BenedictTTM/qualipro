@@ -24,6 +24,8 @@ export const links: Route.LinksFunction = () => [
   // Preconnect to external image CDNs for faster loading
   { rel: "preconnect", href: "https://res.cloudinary.com" },
   { rel: "dns-prefetch", href: "https://images.pexels.com" },
+  { rel: "icon", href: "/favicon.ico" },
+  { rel: "icon", type: "image/png", href: "/logo.png" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {

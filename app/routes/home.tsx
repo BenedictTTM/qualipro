@@ -146,6 +146,39 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "QualiPRO Consult",
+            "url": "https://www.qualiproconsult.com/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.qualiproconsult.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": ["About", "Services", "Industries", "Tools & Methodology", "Contact"],
+            "url": [
+              "https://www.qualiproconsult.com/about",
+              "https://www.qualiproconsult.com/services",
+              "https://www.qualiproconsult.com/industries",
+              "https://www.qualiproconsult.com/tools",
+              "https://www.qualiproconsult.com/contact"
+            ]
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
               {

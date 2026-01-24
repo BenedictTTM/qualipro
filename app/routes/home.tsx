@@ -162,14 +162,44 @@ export default function Home() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "SiteNavigationElement",
-            "name": ["About", "Services", "Industries", "Tools & Methodology", "Contact"],
-            "url": [
-              "https://www.qualiproconsult.com/about",
-              "https://www.qualiproconsult.com/services",
-              "https://www.qualiproconsult.com/industries",
-              "https://www.qualiproconsult.com/tools",
-              "https://www.qualiproconsult.com/contact"
+            "@type": "ItemList",
+            "name": "Site Navigation",
+            "itemListElement": [
+              {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "Services",
+                "description": "Comprehensive digital solutions from web development to AI integration and quality management consulting",
+                "url": "https://www.qualiproconsult.com/services"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "About",
+                "description": "Learn about QualiPRO Consult's mission, values, and commitment to quality excellence across Africa",
+                "url": "https://www.qualiproconsult.com/about"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Contact",
+                "description": "Get in touch with QualiPRO Consult for your digital transformation and quality management needs",
+                "url": "https://www.qualiproconsult.com/contact"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Industries",
+                "description": "Serving pharmaceutical, food processing, laboratories, medical device, healthcare, and manufacturing sectors",
+                "url": "https://www.qualiproconsult.com/industries"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "Tools & Methodology",
+                "description": "Our proven methodologies and tools for implementing effective quality management systems",
+                "url": "https://www.qualiproconsult.com/tools"
+              }
             ]
           }),
         }}

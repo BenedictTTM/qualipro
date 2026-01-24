@@ -36,6 +36,77 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        {/* Global Organization Schema for Rich Search Results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "QualiPRO Consult",
+              "alternateName": "QualiPRO",
+              "url": "https://www.qualiproconsult.com",
+              "logo": "https://www.qualiproconsult.com/logo.png",
+              "image": "https://www.qualiproconsult.com/logo.png",
+              "description": "QualiPRO Consult is a leading quality management and ISO consulting firm serving Ghana and Africa. We provide expert consulting for ISO 9001, ISO 17025, GMP compliance, and quality systems implementation.",
+              "slogan": "Quality Beyond Certification",
+              "foundingDate": "2020",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+233-24-885-7308",
+                "contactType": "Customer Service",
+                "email": "info@qualiproconsult.com",
+                "areaServed": ["GH", "Africa"],
+                "availableLanguage": ["English"]
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "GH",
+                "addressRegion": "Greater Accra",
+                "addressLocality": "Accra"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "5.6037",
+                "longitude": "-0.1870"
+              },
+              "areaServed": [
+                {
+                  "@type": "Country",
+                  "name": "Ghana"
+                },
+                {
+                  "@type": "Continent",
+                  "name": "Africa"
+                }
+              ],
+              "sameAs": [
+                "https://www.linkedin.com/company/qualipro-consult",
+                "https://web.facebook.com/qualiproconsult"
+              ],
+              "serviceType": [
+                "ISO Consulting",
+                "Quality Management Systems",
+                "GMP Consulting",
+                "Internal Audits",
+                "Training and Capacity Building",
+                "Certification Support"
+              ],
+              "knowsAbout": [
+                "ISO 9001",
+                "ISO 17025",
+                "ISO 22000",
+                "ISO 13485",
+                "ISO 14001",
+                "ISO 45001",
+                "ISO 15189",
+                "Good Manufacturing Practice",
+                "Quality Management Systems",
+                "Regulatory Compliance"
+              ]
+            }),
+          }}
+        />
       </head>
       <body>
         {children}

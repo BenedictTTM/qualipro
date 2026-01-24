@@ -109,6 +109,46 @@ const INDUSTRIES = [
 export default function Industries() {
     return (
         <div className="w-full bg-slate-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://www.qualiproconsult.com/"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Industries",
+                                "item": "https://www.qualiproconsult.com/industries"
+                            }
+                        ]
+                    }),
+                }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "name": "Industries We Serve",
+                        "description": "QualiPRO Consult provides quality management consulting services across multiple industries",
+                        "itemListElement": INDUSTRIES.map((industry, index) => ({
+                            "@type": "ListItem",
+                            "position": index + 1,
+                            "name": industry.title,
+                            "description": industry.description
+                        }))
+                    }),
+                }}
+            />
             {/* Hero Section */}
             <section className="relative py-12 md:py-24 bg-white overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">

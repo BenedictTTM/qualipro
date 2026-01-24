@@ -15,7 +15,7 @@ import {
 
 export function meta({ }: Route.MetaArgs) {
   const title = "ISO & GMP Consulting Services in Ghana | QualiPRO Consult";
-  const description = "Get ISO 9001, GMP & ISO 17025 certification faster. Expert quality management consulting in Ghana & Africa. Free consultation available.";
+  const description = "Get ISO 9001, GMP & ISO 17025 certification faster. Expert quality management consulting in Ghana & Africa.";
   const url = "https://www.qualiproconsult.com/";
   const image = "https://www.qualiproconsult.com/logo.png";
 
